@@ -170,10 +170,10 @@ function addAsterisksToRequiredInputs(){
 // добавить опции для выпадающего меню типа изделия
 function constructDropMenu(dropdown, options){
     Object.keys(options).forEach(key => {
-        const node = document.createElement('option')
-        const textnode = document.createTextNode(key)
-        node.appendChild(textnode)
-        dropdown.appendChild(node)
+        dropdown.createChild({
+            tagName: 'option',
+            text: key,
+        })
     })
     
 
@@ -217,34 +217,43 @@ function createInput(inputName, inputSettings){
     })
     wrapper.createChild = createChild
 
-    if(inputSettings.type == 'checkbox'){
-        const input = wrapper.createChild({
+    if(inputSettings.type !== 'checkbox'){
+         const input = wrapper.createChild({
             tagName: 'input',
-            className: 'form-checkbox',
+            className: 'form-input',
+            placeholder: inputName,
             type: inputSettings.type,
-            checked: inputSettings.default,
-            name: inputName,
+            value: inputSettings.default ?? ""
         })
-
-        const label = wrapper.createChild({
-            tagName: 'label',
-            text: inputName,
-            className: 'form-checkbox-label',
-            for: inputName,
-        })
-        wrapper.style.flexDirection = 'row'
-        wrapper.classList.add('form-checkbox-wrapper')
-
         return input
     }
 
+    // checkbox case
     const input = wrapper.createChild({
         tagName: 'input',
-        className: 'form-input',
-        placeholder: inputName,
+        className: 'form-checkbox',
         type: inputSettings.type,
-        value: inputSettings.default ?? ""
+        id: inputName,
     })
+    input.checked = inputSettings.default
+
+    const label = wrapper.createChild({
+        tagName: 'label',
+        text: inputName,
+        className: 'form-checkbox-label',
+        for: inputName,
+    })
+    wrapper.classList.add('form-checkbox-wrapper')
+
+    const checkboxCustom = wrapper.createChild({
+        tagName: 'span',
+        className: 'form-checkbox-custom',
+    })
+
+    wrapper.onclick = (e)=>{
+        input.click()
+    }
+   
     return input
 }
 
@@ -255,7 +264,6 @@ const inputsSection = document.querySelector('.eval-content-inputs-top')
 inputsSection.createChild = createChild
 addAsterisksToRequiredInputs()
 constructDropMenu(dropdown, options)
-
 
 
 

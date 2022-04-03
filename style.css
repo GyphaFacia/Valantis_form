@@ -449,4 +449,71 @@
   -webkit-box-shadow: 0 0 0 0.25rem rgba(225, 83, 97, 0.5);
           box-shadow: 0 0 0 0.25rem rgba(225, 83, 97, 0.5);
 }
+
+.form-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.form-checkbox-wrapper {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.form-checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(136, 136, 136, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #F1F1F1;
+          box-shadow: 0 0 0 1px #F1F1F1;
+  border-radius: 5px;
+  -webkit-transition-duration: 255ms;
+          transition-duration: 255ms;
+  cursor: pointer;
+}
+
+.form-checkbox-wrapper:hover input ~ .form-checkbox-custom {
+  background-color: white;
+  -webkit-box-shadow: 0 0 0 1px #A52838;
+          box-shadow: 0 0 0 1px #A52838;
+}
+
+.form-checkbox-wrapper input:checked ~ .form-checkbox-custom {
+  background-color: white;
+}
+
+.form-checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.form-checkbox-wrapper input:checked ~ .form-checkbox-custom:after {
+  display: block;
+}
+
+.form-checkbox-wrapper .form-checkbox-custom:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #A52838;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
 /*# sourceMappingURL=style.css.map */
