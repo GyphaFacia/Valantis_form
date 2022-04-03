@@ -5,20 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-    <section class="evalutaion">
-        <h2 class="evalutaion__title">
-            <b>Онлайн</b>
-            оценка
+    <!-- eval => evaluation later !!! -->
+    <section class="eval">
+        <h2 class="eval-title">
+            <b class="eval-title__left">Онлайн</b>
+            <div class="eval-title__center"></div>
+            <div class="eval-title__right">оценка</div>
         </h2>
 
-        <form action="" class="evaluation-form">
+        <div class="eval-content">
+            <form class="eval-content-inputs" action="#">
+                <div class="eval-content-inputs-top">
+                    <div><input type="text" placeholder="Имя пользователя" class="form-input" required></div>
+                    <div><input type="text" placeholder="Телефон" class="form-input" required></div>
+                    <div><input type="text" placeholder="Электронная почта" class="form-input" required></div>
+                    <div><input type="text" placeholder="blank" class="form-input"></div>
+                    <div><input type="text" placeholder="blank" class="form-input"></div>
+                    <div><input type="text" placeholder="blank" class="form-input"></div>
+                </div>
+                <div class="eval-content-inputs-middle">
+                    <textarea name="" id="" cols="40" rows="10" class="form-input"
+                    placeholder="Дополнительная информация"
+                    ></textarea>
+                </div>
+                <div class="eval-content-inputs-bottom">
+                    <input type="submit" value = "Отправить" class="eval-content-inputs-bottom-sendbtn red-button">
 
-        </form>
+                    <div class="eval-content-inputs-bottom-hint">
+                        Или свяжитесь с нами
+                        через мессенджеры:
+                    </div>
+                    <div class="eval-content-inputs-bottom-socials">
+                        <a href="#" class="eval-content-inputs-bottom-socials__link">
+                            <img src="./src/Images/Svg/WhatsApp.svg" alt="">
+                        </a>
+                        <a href="viber://chat?number=79852536119" class="eval-content-inputs-bottom-socials__link">
+                            <img src="./src/Images/Svg/Viber.svg" alt="">
+                        </a>
+                        <a href="tg://resolve?domain=79852536119" class="eval-content-inputs-bottom-socials__link">
+                            <img src="./src/Images/Svg/Telegram.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </form>
+            
+            <aside class="eval-content-images">
+                <div class="eval-content-images-upload">
+                    <img src="./src/Images/Svg/Add Image.svg" alt="">
+                    <h3 class="eval-content-images-upload__title">Загрузить фотографии</h3>
+                </div>
+
+                <hr class="eval-content-images-hr"/>
+
+                <div class="eval-content-images-uploaded">
+
+                </div>
+            </aside>
+        </div>
     </section>
     
+
+    <script src="./script.js"></script>
 </body>
 </html>

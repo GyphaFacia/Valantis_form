@@ -5,18 +5,250 @@ $clr4: #A52838; // Красный
 $clr5: #FAFAFA; // Светло-серый
 $clr6: #F1F1F1; // Линии
 
-div{
-    font-family: 'Circe';
-    font-style: normal;
-    font-weight: 400;
+$clr7: #E8E8E8;
+
+body{
+    // filter: invert(1);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Circe";
+    src: url('./src/Fonts/Circe/Circe/Circe-Regular.woff');
+}
+
+
+@mixin flex($just: center, $align: center, $dir: row){
+    display: flex;
+    align-items: $align;
+    justify-content: $just;
+    flex-direction: $dir;
+}
+
+@mixin flexV {
+    @include flex(flex-start, center, column);
+}
+
+@mixin flexB {
+    @include flex(space-between);
+}
+
+@mixin flexA {
+    @include flex(space-around);
+}
+
+@mixin rect($res){
+    width: $res;
+    height: $res;
+}
+
+@mixin circle{
+    border-radius: 100vmax;
+}
+
+
+.eval{
+    @include flexV;
+    font-family: Manrope;
+    margin: 0 10vw;
+
+    font-family: Circe;
     font-size: 18px;
-    line-height: 27px;
 
-    /* Серый */ 
-    color: #888888;
+    &-title{
+        @include flex;
+        font-size: 36px;
+        line-height: 47px;
+        letter-spacing: 0em;
+        text-align: left;
+        mask-border: 30px;
 
-    &::after{
-        content: '*';
-        color: red;
+        &__left{
+            font-weight: 700;
+        }
+        &__center{
+            @include circle();
+            @include rect(6px);
+            margin: 0 10px;
+            background-color: $clr4;
+            transform: translateY(50%);
+        }
+        &__right{
+            font-weight: 400;
+        }
+    }
+
+    &-content{
+        @include flex(center, flex-start);
+        padding: 40px;
+        border-radius: 15px;
+        background-color: $clr5;
+
+        &-inputs{
+            align-self: stretch;
+            margin-right: 50px;
+            @include flexV;
+
+            &-top, &-middle, &-bottom{
+                width: 100%;
+            }
+
+            &-top{
+                @include flexB;
+                flex-wrap: wrap;
+                & input{
+                    flex-basis: 45%;
+                    flex-grow: 1;
+                    
+                    margin: 0 20px 20px 0;
+                }
+            }
+            &-middle {
+                height: 100%;
+                & textarea{
+                    height: 100%;
+                    width: calc(100% - 20px);
+                }
+            }
+            &-bottom {
+                @include flexB;
+                margin-top: 30px;
+                &-sendbtn{
+                    @include flex;
+                    padding: 15px 0;
+                    background-color: $clr4;
+                    flex-basis: 50%;
+                    border-radius: 10px;
+                    color: white;
+                }
+                &-hint{
+                    font-family: Circe;
+                    font-size: 16px;
+                    font-weight: 400;
+                    margin-left: 32px;
+                    margin-right: 10px;
+                    color: $clr2;
+                }
+                &-socials{
+                    @include flex;
+                    margin-right: 10px;
+                    &__link{
+                        @include rect(46px);
+                        @include flex;
+                        border-radius: 10px;
+                        background-color: $clr3;
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+
+        &-images{
+            @include flexV;
+            flex-wrap: wrap;
+            border-radius: 15px;
+            background-color: $clr6;
+
+            
+            &-upload {
+                @include flexV;
+                &__title{
+                    font-family: Circe;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+
+                & img{
+                    margin-top: 64px;
+                }
+            }
+
+            &-hr{
+                width: 100%;
+                margin-bottom: 40px;
+                margin-top: 56px;
+                border: none;
+                border-bottom: 1px solid #E8E8E8;
+            }
+
+            &-uploaded{
+                $imgRes: 85px;
+                $imgMargin: 15px;
+                @include flex;
+                flex-wrap: wrap;
+                width: calc(#{$imgRes} * 3 + #{$imgMargin}*4);
+                margin: 0 64px 40px 64px;
+
+                &-image{
+                    @include flex();
+                    @include rect($imgRes);
+                    background-color: transparentize($clr2, 0.95);
+                    margin: calc(15px / 2);
+                    border-radius: 10px;
+                    position: relative;
+
+                    &:hover{
+                        & button{
+                            opacity: 1;
+                        }
+                    }
+
+                    &__closebtn{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        transform: translate(50%, -50%);
+                        @include rect(24px);
+                        @include circle();
+                        @include flex;
+                        opacity: 0;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.form-input{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid $clr6;
+    background-color: white;
+    resize: none;
+
+    transition-duration: 255ms;
+    &:focus{
+        outline: none;
+        border-color: $clr4;
+    }
+
+    font-size: 18px;
+    &::placeholder {
+        font-size: 18px;
+        color: $clr2;
+    }
+}
+
+.red-button{
+    outline: none;
+    border: none;
+
+    background-color: $clr4;
+    color: white;
+    font-size: 18px;
+
+    cursor: pointer;
+    transition-duration: 255ms;
+    &:hover{
+        background-color: #b02a37;
+    }
+
+    &:active{
+        box-shadow: 0 0 0 0.25rem rgba(225, 83, 97, 0.5);
     }
 }
