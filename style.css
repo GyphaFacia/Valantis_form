@@ -1,0 +1,16 @@
+@charset "UTF-8";
+div {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  /* Серый */
+  color: #888888;
+}
+
+div::after {
+  content: '*';
+  color: red;
+}
+/*# sourceMappingURL=style.css.map */

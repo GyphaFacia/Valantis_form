@@ -1,0 +1,22 @@
+$clr1: #1E1E1E; // Черный
+$clr2: #888888; // Серный
+$clr3: #BE9A55; // Золотой
+$clr4: #A52838; // Красный
+$clr5: #FAFAFA; // Светло-серый
+$clr6: #F1F1F1; // Линии
+
+div{
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+
+    /* Серый */ 
+    color: #888888;
+
+    &::after{
+        content: '*';
+        color: red;
+    }
+}
