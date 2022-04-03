@@ -39,6 +39,46 @@
 
 // Ввод электронной почты и телефона валидируются
 
+const options = {
+    'Ювелирное изделие': {
+        'Металл': {
+            type: 'text',
+        },
+        'Проба': {
+            type: 'number',
+        },
+        'Вес гр.': {
+            type: 'float',
+        },
+    },
+    'Драгоценные камни': {
+        'Вес в каратах': {
+            type: 'float',
+        },
+        'Наличие документов':{
+            type: 'checkbox',
+            default: false,
+        },
+    },
+    'Шубы': {
+        'Вид меха': {
+            type: 'text',
+        },
+        'Состояние изделия':{
+            type: 'text',
+        }
+    },
+    'Техника Apple': {
+        'Модель': {
+            type: 'text'
+        },
+        'Объем памяти': {
+            type: 'number',
+        }
+    },
+    'Антиквариат': {},
+    'Другое': {},
+}
 
 const grid = document.querySelector('.eval-content-images-uploaded')
 
@@ -53,6 +93,7 @@ for (let i = 0; i < 9; i++) {
     `
 }
 
+// вычислить размер плейсхолдера у инпута
 function measurePlaceholderWidth(inputDom){
     const node = document.createElement('span')
     const textnode = document.createTextNode(
@@ -75,11 +116,11 @@ function measurePlaceholderWidth(inputDom){
     return width
 }
 
-function placeStarOnRequiredInput(inputDom){
+// расположить звёздочку после плейсхолдера инпута
+function placeAsteriskOnInput(inputDom){
     const width = measurePlaceholderWidth(inputDom)
     const parent = inputDom.parentNode
     const {height} = parent.getBoundingClientRect()
-    parent.style.position = 'relative'
     
     const asterisk = document.createElement('span')
     const textnode = document.createTextNode('*')
@@ -99,13 +140,58 @@ function placeStarOnRequiredInput(inputDom){
     })
 }
 
+// добавить ко всем обязательным инпутам звёздочку
 function addAsterisksToRequiredInputs(){
     [...document.querySelectorAll('input[required]')].forEach(
-        (e) => placeStarOnRequiredInput(e)
+        (e) => placeAsteriskOnInput(e)
     )
 }
 
+// добавить опции для выпадающего меню типа изделия
+function constructDropMenu(dropdown, options){
+    Object.keys(options).forEach(key => {
+        const node = document.createElement('option')
+        const textnode = document.createTextNode(key)
+        node.appendChild(textnode)
+        dropdown.appendChild(node)
+    })
+    
+
+    dropdown.setAttribute('prev', dropdown.value)
+    dropdown.addEventListener('change', () => {
+            const actuallyChanged = dropdown.getAttribute('prev') === dropdown.value
+            if(!actuallyChanged){
+                handleDropDownMenuChange(dropdown, options)
+                dropdown.setAttribute('prev', dropdown.value)
+            }
+        }
+    )
+}
+
+// обработать смену выбора типа изделия, добавить соответствующие инпуты
+function handleDropDownMenuChange(dropdown, options){
+    removeOldInputs()
+    // console.log(dropdown.value)
+    const inputs = options[dropdown.value]
+    // console.log(inputs)
+}
+
+// убрать инпуты старого состояния меню выбора типа изделия
+function removeOldInputs(){
+    const childs = inputsSection.children
+    for(let i = 4; i <= childs.length; i++){
+        const child = childs[i]
+        if(!child){ continue }
+        setTimeout(()=>{
+            inputsSection.removeChild(child)
+        }, 0)
+    }
+}
+
+const dropdown = document.querySelector('select.form-input')
+const inputsSection = document.querySelector('.eval-content-inputs-top')
 addAsterisksToRequiredInputs()
+constructDropMenu(dropdown, options)
 
 
 

@@ -17,19 +17,30 @@
     <section class="eval">
         <h2 class="eval-title">
             <b class="eval-title__left">Онлайн</b>
-            <div class="eval-title__center"></div>
+            <span class="eval-title__center"></span>
             <div class="eval-title__right">оценка</div>
         </h2>
 
         <div class="eval-content">
             <form class="eval-content-inputs" action="#">
                 <div class="eval-content-inputs-top">
-                    <div><input type="text" placeholder="Имя пользователя" class="form-input" required></div>
-                    <div><input type="text" placeholder="Телефон" class="form-input" required></div>
-                    <div><input type="text" placeholder="Электронная почта" class="form-input" required></div>
-                    <div><input type="text" placeholder="blank" class="form-input"></div>
-                    <div><input type="text" placeholder="blank" class="form-input"></div>
-                    <div><input type="text" placeholder="blank" class="form-input"></div>
+                    <div class="eval-content-inputs-top-input-wrapper">
+                        <input placeholder="Имя пользователя" type="text" class="form-input" required>
+                    </div>
+
+                    <div class="eval-content-inputs-top-input-wrapper">
+                        <input placeholder="Телефон" type="tel" class="form-input">
+                    </div>
+
+                    <div class="eval-content-inputs-top-input-wrapper">
+                        <input placeholder="Электронная почта" type="email" class="form-input" required>
+                    </div>
+
+                    <div class="eval-content-inputs-top-input-wrapper">
+                        <select class="form-input form-select">
+                        </select>
+                        <img src="./src/Images/Svg/Arrow Down.svg" class="form-select__arrow" alt="Arrow down icon">
+                    </div>
                 </div>
                 <div class="eval-content-inputs-middle">
                     <textarea name="" id="" cols="40" rows="10" class="form-input"
@@ -45,13 +56,13 @@
                     </div>
                     <div class="eval-content-inputs-bottom-socials">
                         <a href="#" class="eval-content-inputs-bottom-socials__link">
-                            <img src="./src/Images/Svg/WhatsApp.svg" alt="">
+                            <img src="./src/Images/Svg/WhatsApp.svg" alt="WhatsApp link">
                         </a>
                         <a href="viber://chat?number=79852536119" class="eval-content-inputs-bottom-socials__link">
-                            <img src="./src/Images/Svg/Viber.svg" alt="">
+                            <img src="./src/Images/Svg/Viber.svg" alt="Viber link">
                         </a>
                         <a href="tg://resolve?domain=79852536119" class="eval-content-inputs-bottom-socials__link">
-                            <img src="./src/Images/Svg/Telegram.svg" alt="">
+                            <img src="./src/Images/Svg/Telegram.svg" alt="Telegram link">
                         </a>
                     </div>
                 </div>
@@ -59,7 +70,7 @@
             
             <aside class="eval-content-images">
                 <div class="eval-content-images-upload">
-                    <img src="./src/Images/Svg/Add Image.svg" alt="">
+                    <img src="./src/Images/Svg/Add Image.svg" alt="Add image link">
                     <h3 class="eval-content-images-upload__title">Загрузить фотографии</h3>
                 </div>
 

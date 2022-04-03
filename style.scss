@@ -99,11 +99,16 @@ body{
             &-top{
                 @include flexB;
                 flex-wrap: wrap;
-                & input{
+
+                &-input-wrapper{
+                    @include flexV;
+                    position: relative;
                     flex-basis: 45%;
                     flex-grow: 1;
-                    
                     margin: 0 20px 20px 0;
+                }
+                & .form-input, & .form-select{
+                    align-self: stretch;
                 }
             }
             &-middle {
@@ -172,7 +177,7 @@ body{
                 margin-bottom: 40px;
                 margin-top: 56px;
                 border: none;
-                border-bottom: 1px solid #E8E8E8;
+                border-bottom: 1px solid $clr7;
             }
 
             &-uploaded{
@@ -231,6 +236,16 @@ body{
     &::placeholder {
         font-size: 18px;
         color: $clr2;
+    }
+}
+
+.form-select{
+    appearance: none;
+    &__arrow{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
     }
 }
 
