@@ -7,9 +7,6 @@ $clr6: #F1F1F1; // Линии
 
 $clr7: #E8E8E8;
 
-body{
-    // filter: invert(1);
-}
 
 *{
     box-sizing: border-box;
@@ -104,6 +101,7 @@ body{
                     @include flexV;
                     position: relative;
                     flex-basis: 45%;
+                    max-width: 45%;
                     flex-grow: 1;
                     margin: 0 20px 20px 0;
                 }
@@ -265,5 +263,15 @@ body{
 
     &:active{
         box-shadow: 0 0 0 0.25rem rgba(225, 83, 97, 0.5);
+    }
+}
+
+.form-checkbox{
+    &-wrapper{
+
+    }
+
+    &-label{
+        
     }
 }

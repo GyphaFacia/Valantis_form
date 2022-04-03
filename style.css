@@ -145,6 +145,7 @@
   position: relative;
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
+  max-width: 45%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
