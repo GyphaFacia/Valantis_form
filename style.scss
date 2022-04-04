@@ -101,7 +101,8 @@ $clr7: #E8E8E8;
                     @include flexV;
                     position: relative;
                     flex-basis: 45%;
-                    max-width: 45%;
+                    // max-width: 45%;
+                    min-width: 210px;
                     flex-grow: 1;
                     margin: 0 20px 20px 0;
                 }
