@@ -1,9 +1,3 @@
-// Во всех случаях так же присутствует поле для загрузки изображений. 
-// Изначально по центру поля расположена картинка "Загрузить фото". 
-// При клике на картинку открывается диалог выбора файла. 
-// После выбора в форме появляется перевью изображения. При наведении на изображение в его углу появляется крестик.
-// При нажатии на крестик изображение удаляется из формы. Ограничение 9 картинок.
-
 const options = {
     'Ювелирное изделие': {
         'Металл': {
@@ -65,7 +59,10 @@ const options = {
 
 
 
-function handleFormSubmit(e){
+async function handleFormSubmit(e){
+    if(e.submitter !== submitButton){ return false }
+
+    e.preventDefault()
     const evalType = dropdown.value // тип изделия
     const evalData = options[evalType] // поля от типа изделия
 
@@ -84,25 +81,13 @@ function handleFormSubmit(e){
     
     let [name, phone, mail] = inputsVals
 
-    if(!name){
-        alert('Поле имени не может быть пустым')
-        return null
-    }
+    if(!name){ return alert('Поле имени не может быть пустым')}
 
-    if(!phone && !mail){
-        alert('Введите Ваш номер телефона или адрес электронной почты')
-        return null
-    }
+    if(!phone && !mail){ return alert('Введите Ваш номер телефона или адрес электронной почты') }
 
-    if(phone && validatePhone(phone)){
-        alert(validatePhone(phone))
-        return null
-    }
+    if(phone && validatePhone(phone)){ return alert(validatePhone(phone)) }
 
-    if(mail && validateMail(mail)){
-        alert(validateMail(mail))
-        return null 
-    }
+    if(mail && validateMail(mail)){ return alert(validateMail(mail)) }
 
     const obj = Object.keys(options[dropdown.value]).reduce(
         (acc, cur, i)=>({
@@ -116,10 +101,20 @@ function handleFormSubmit(e){
     obj.comment = textArea?.value?.trim() ?? ''
     obj.files = photos.map(({file}) => file)
 
-    console.log(obj)
+    const formData = new FormData()
+    Object.keys(obj).forEach(
+        key => formData.append(key, obj[key])
+    )
 
-    e.preventDefault()
-    return false
+    // const response = fetch('...', {
+    //     method: 'POST',
+    //     body: formData,
+    // })
+    // .then(resp => resp.json())
+    // .then(json => console.log(json))
+    // .catch(e => console.warn(e))
+
+    return true
 }
 
 
@@ -134,26 +129,13 @@ inputsSection.createChild = createChild
 
 const textArea = document.querySelector('textarea')
 
-addAsterisksToRequiredInputs()
-constructDropMenu(dropdown, options)
+const submitButton = evalForm.querySelector('input[type="submit"]')
+
 setTimeout(()=>{
     dropdown.value = 'Ювелирное изделие'
     handleDropDownMenuChange(dropdown, options)
 }, 0)
 
-// setTimeout(() => {
-//     const inputs = [...inputsSection.querySelectorAll('input')]
-
-//     inputs[0].value = 'Name'
-//     inputs[1].value = '+7 499 123 45 67'
-//     inputs[2].value = 'some@mail.ru'
-
-//     inputs[3].value = 'золото'
-//     inputs[4].value = '333'
-//     inputs[5].value = '50'
-
-//     textArea.value = 'test '.repeat(5)
-// }, 100);
 
 
 

@@ -52,3 +52,5 @@ function addAsterisksToRequiredInputs(){
         (e) => placeAsteriskOnInput(e)
     )
 }
+
+addAsterisksToRequiredInputs()

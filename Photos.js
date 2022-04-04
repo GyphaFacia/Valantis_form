@@ -9,6 +9,7 @@ fileInput.oninput = handleInput
 
 
 function handleInput(e){
+    e.preventDefault()
     const files = [...fileInput.files]
 
     files.forEach(photo => {
@@ -18,8 +19,19 @@ function handleInput(e){
     })
 }
 
-function validateImage(file, maxMegaBytes = 8, allowedExts = 'png jpg jpeg'.split(' ')){
+function validateImage(
+    file,
+    maxMegaBytes = 8,
+    maxImages = 9,
+    allowedExts = 'png jpg jpeg'.split(' ')
+){
     const megaBytes = file.size / 1024 / 1024
+
+    if(photos.length >= maxImages){
+        alert(`Вы не можете прикрепить более ${maxImages} фотографий`)
+        return false
+    }
+
     if(megaBytes > maxMegaBytes){
         alert(`Файл "${file.name}" слишком большой. Допустимый размер - до ${maxMegaBytes} мегабайт`)
         return false
@@ -62,7 +74,10 @@ function addImage(file){
         src: './src/Images/Svg/X.svg'
     })
 
-    closebtn.onclick = ()=>{removeImage(file)}
+    closebtn.onclick = (e)=>{
+        removeImage(file)
+        e.stopPropagation()
+    }
 
     photos.push({
         name: file.name,
@@ -91,11 +106,11 @@ function handlePhotosCntChange(){
     if(photos.length){
         plusButton.style.display = 'flex'
         blankSection.style.display = 'none'
-        photosSection.style.border = 'none'
+        photosSection.parentElement.style.border = 'none'
         return null
     }
     blankSection.style.display = 'flex'
     plusButton.style.display = 'none'
-    photosSection.style.border = ''
+    photosSection.parentElement.style.border = ''
 }
 handlePhotosCntChange()

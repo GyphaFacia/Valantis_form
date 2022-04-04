@@ -103,3 +103,5 @@ function createInput(inputName, inputSettings){
     addAsterisksToRequiredInputs()
     return input
 }
+
+constructDropMenu(dropdown, options)
