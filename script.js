@@ -79,7 +79,6 @@ async function checkEmail(mail){
                 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVzdG1haWwudG9wIiwiYXVkIjoiaHR0cHM6XC9cL2FwaS50ZXN0bWFpbC50b3AiLCJ1c2VyIjoiNjI0YTQxMmI5ZGFiMiIsInN1YiI6ImFwaSIsImlhdCI6MTY0OTAzMzUzMiwiZXhwIjo0ODA0NzEwNzMyfQ.CNz8DdGV-63NHoI3uUB7jgI047JrF7LSO_ihkANlX4E'
             }
         })
-        console.log('!')
         const {result, message} = await resp.json()
         return {result, message}
     } catch (error) {
@@ -102,18 +101,31 @@ async function handleFormSubmit(e){
         return null
     }
 
-    let phoneVal = validatePhone(phone)
-    if(phone && phoneVal){
-        alert(phoneVal)
+    if(phone && validatePhone(phone)){
+        alert(validatePhone(phone))
         return null
     }
 
-    if(mail && !(await checkEmail(mail)).result){
-        alert(`Нам не знаком ваш почтовый ящик "${mail.split('@').pop().split('.').shift()}"`)
-        return null
+    if(mail && validateMail(mail)){
+        alert(validateMail(mail))
+        return null 
     }
+
+    if(mail){
+        try {
+            const domain = mail.split('@').pop()
+            if(!(await checkEmail(domain)).result){
+                alert(`Нам не знаком ваш почтовый ящик "${domain}"`)
+                return null
+            }
+        } catch (error) {
+            console.warn(error)
+        }
+    }
+    
 
     e.preventDefault()
+    console.log('OK')
     return false
 }
 
