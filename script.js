@@ -69,6 +69,54 @@ const options = {
     'Другое': {},
 }
 
+async function checkEmail(mail){
+    try {
+        const API = 'https://api.testmail.top/domain/check?data='
+        const url = `${API}${mail}`
+        const resp = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVzdG1haWwudG9wIiwiYXVkIjoiaHR0cHM6XC9cL2FwaS50ZXN0bWFpbC50b3AiLCJ1c2VyIjoiNjI0YTQxMmI5ZGFiMiIsInN1YiI6ImFwaSIsImlhdCI6MTY0OTAzMzUzMiwiZXhwIjo0ODA0NzEwNzMyfQ.CNz8DdGV-63NHoI3uUB7jgI047JrF7LSO_ihkANlX4E'
+            }
+        })
+        console.log('!')
+        const {result, message} = await resp.json()
+        return {result, message}
+    } catch (error) {
+        console.warn(error)
+        return {result: false, message: '...'}        
+    }
+}
+
+async function handleFormSubmit(e){
+    let inputs = [...form.querySelectorAll('input')].map(inp => inp.value)
+    let [name, phone, mail] = inputs
+
+    if(!name){
+        alert('Поле имени не может быть пустым')
+        return null
+    }
+
+    if(!phone && !mail){
+        alert('Введите Ваш номер телефона или адрес электронной почты')
+        return null
+    }
+
+    let phoneVal = validatePhone(phone)
+    if(phone && phoneVal){
+        alert(phoneVal)
+        return null
+    }
+
+    if(mail && !(await checkEmail(mail)).result){
+        alert(`Нам не знаком ваш почтовый ящик "${mail.split('@').pop().split('.').shift()}"`)
+        return null
+    }
+
+    e.preventDefault()
+    return false
+}
+
 
 const dropdown = document.querySelector('select.form-input')
 dropdown.createChild = createChild
@@ -80,9 +128,11 @@ setTimeout(()=>{
     dropdown.value = 'Ювелирное изделие'
     handleDropDownMenuChange(dropdown, options)
 }, 0)
+const form = document.querySelector('form.eval-content-inputs')
+form.onsubmit = handleFormSubmit
 
 
-
-
+// Вопросы
+// Как пользователь узнает о своей ошибке ?
 
 

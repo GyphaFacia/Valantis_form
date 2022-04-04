@@ -42,7 +42,7 @@ function placeAsteriskOnInput(inputDom){
     style.top = `${height/4 - 5}px`    
 
     inputDom.addEventListener('input', (e)=>{
-        asterisk.style.display = !!e.target.value ? 'none' : 'block'
+        asterisk.style.display = !!String(e.target.value) ? 'none' : 'block'
     })
 }
 

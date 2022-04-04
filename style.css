@@ -522,5 +522,6 @@
   font-size: 18px;
   color: #A52838;
   font-weight: 900;
+  pointer-events: none;
 }
 /*# sourceMappingURL=style.css.map */
