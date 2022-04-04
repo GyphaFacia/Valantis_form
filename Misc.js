@@ -20,15 +20,23 @@ function createChild(ops){
     return node
 }
 
-const grid = document.querySelector('.eval-content-images-uploaded')
-
-for (let i = 0; i < 9; i++) {
-    grid.innerHTML += `
-    <div class="eval-content-images-uploaded-image">
-        <img src="./src/Images/Svg/placeholder.svg" alt="">
-        <button class="eval-content-images-uploaded-image__closebtn red-button">
-            <img src="./src/Images/Svg/X.svg">
-        </button>
-    </div>
-    `
+let mobile = false
+function handleMobile(){
+    const {matches} = matchMedia('(max-width: 1000px)')
+    if(matches === mobile){return null}
+    mobile = matches
+    const imgs = document.querySelector('aside.eval-content-images')
+    if(!mobile){
+        const newParent = document.querySelector('.eval-content')
+        imgs.parentElement.removeChild(imgs)
+        newParent.appendChild(imgs)
+    }
+    else{
+        const newParent = document.querySelector('.eval-content-inputs')
+        const before = newParent.children[2]
+        imgs.parentElement.removeChild(imgs)
+        newParent.insertBefore(imgs, before)
+    }
 }
+window.onresize = handleMobile
+window.onload = handleMobile

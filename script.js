@@ -128,7 +128,7 @@ evalForm.onsubmit = handleFormSubmit
 const dropdown = document.querySelector('select.form-input')
 dropdown.createChild = createChild
 
-const inputsSection = evalForm.children[0]
+const inputsSection = evalForm.children[0].children[0]
 inputsSection.createChild = createChild
 
 const textArea = document.querySelector('textarea')
@@ -139,28 +139,6 @@ setTimeout(()=>{
     dropdown.value = 'Ювелирное изделие'
     handleDropDownMenuChange(dropdown, options)
 }, 0)
-
-let mobile = false
-function handleMobile(){
-    const {matches} = matchMedia('(max-width: 1000px)')
-    if(matches === mobile){return null}
-    mobile = matches
-    const imgs = document.querySelector('aside.eval-content-images')
-    if(!mobile){
-        const newParent = document.querySelector('.eval-content')
-        imgs.parentElement.removeChild(imgs)
-        newParent.appendChild(imgs)
-    }
-    else{
-        const newParent = document.querySelector('.eval-content-inputs')
-        const before = newParent.children[2]
-        imgs.parentElement.removeChild(imgs)
-        newParent.insertBefore(imgs, before)
-    }
-}
-window.onresize = handleMobile
-window.onload = handleMobile
-
 
 // setTimeout(() => {
 //     const inputs = [...inputsSection.querySelectorAll('input')]

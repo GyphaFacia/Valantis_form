@@ -175,6 +175,7 @@ $clr7: #E8E8E8;
             
             &-upload {
                 @include flexV;
+                position: relative;
                 &__title{
                     font-family: Circe;
                     font-size: 16px;
@@ -185,6 +186,14 @@ $clr7: #E8E8E8;
 
                 & img{
                     margin-top: 64px;
+                }
+
+                & input{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #f003;
+                    // opacity: 0;
                 }
             }
 
@@ -212,6 +221,12 @@ $clr7: #E8E8E8;
                     border-radius: 10px;
                     position: relative;
 
+                    & > img{
+                        @include rect($imgRes);
+                        object-fit: cover;
+                        border-radius: 10px;
+                    }
+
                     &:hover{
                         & button{
                             opacity: 1;
@@ -227,7 +242,6 @@ $clr7: #E8E8E8;
                         @include circle();
                         @include flex;
                         opacity: 0;
-                        font-size: 18px;
                     }
                 }
             }
@@ -431,6 +445,7 @@ $clr7: #E8E8E8;
         }
 
         &-images {
+            width: calc(100% - 40px);
             @include flexV;
             border-radius: 15px;
             margin: 30px 20px;
@@ -449,7 +464,6 @@ $clr7: #E8E8E8;
             }
 
             &-uploaded {
-                // width: calc(100vw - 40px);
                 width: 100%;
                 margin: 0 0 30px 0;
 
@@ -570,6 +584,7 @@ $clr7: #E8E8E8;
                 &-image{
                     &__closebtn{
                         right: 50%;
+                        opacity: 1;
                     }
                 }
             }

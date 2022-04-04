@@ -21,8 +21,8 @@
             <div class="eval-title__right">оценка</div>
         </h2>
 
-        <div class="eval-content">
-            <form class="eval-content-inputs" id="eval-form" name="eval-form" action="#">
+        <form class="eval-content" id="eval-form" name="eval-form" action="#">
+            <section class="eval-content-inputs">
                 <div class="eval-content-inputs-top">
                     <div class="eval-content-inputs-top-input-wrapper">
                         <input placeholder="Имя пользователя" type="text" class="form-input" name="Name" required>
@@ -68,12 +68,13 @@
                         </a>
                     </div>
                 </div>
-            </form>
+            </section>
             
             <aside class="eval-content-images">
                 <div class="eval-content-images-upload">
                     <img src="./src/Images/Svg/Add Image.svg" alt="Add image link">
                     <h3 class="eval-content-images-upload__title">Загрузить фотографии</h3>
+                    <input type="file" multiple>
                 </div>
 
                 <hr class="eval-content-images-hr"/>
@@ -82,7 +83,7 @@
 
                 </div>
             </aside>
-        </div>
+        </form>
     </section>
     
 
@@ -91,6 +92,7 @@
     <script src="./Asterisk.js"></script>
     <script src="./DropDown.js"></script>
     <script src="./Validations.js"></script>
+    <script src="./Photos.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
