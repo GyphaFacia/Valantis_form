@@ -25,7 +25,7 @@ function handleMobile(){
     const {matches} = matchMedia('(max-width: 1000px)')
     if(matches === mobile){return null}
     mobile = matches
-    const imgs = document.querySelector('aside.eval-content-images')
+    const imgs = document.querySelector('.eval-content-images')
     if(!mobile){
         const newParent = document.querySelector('.eval-content')
         imgs.parentElement.removeChild(imgs)

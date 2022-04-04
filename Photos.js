@@ -1,8 +1,12 @@
 const fileInput = document.querySelector('form#eval-form input[type="file"]')
-const photosSection = document.querySelector('.eval-content-images-uploaded')
+const photosSection = document.querySelector('.eval-content-images')
+const blankSection = document.querySelector('.eval-content-images-blank')
+const plusButton = document.querySelector('.eval-content-images-plusbtn')
 photosSection.createChild = createChild
 let photos = []
 fileInput.oninput = handleInput
+
+
 
 function handleInput(e){
     const files = [...fileInput.files]
@@ -25,13 +29,20 @@ function validateImage(file, maxMegaBytes = 8, allowedExts = 'png jpg jpeg'.spli
         return false
     }
 
+    for(let i = 0; i < photos.length; i++){
+        if(photos[i].name == file.name){
+            alert(`Вы уже добавили файл с названием ${file.name}`)
+            return false
+        }
+    }
+
     return true
 }
 
 function addImage(file){
     const frame = photosSection.createChild({
         tagName: 'div',
-        className: 'eval-content-images-uploaded-image',
+        className: 'eval-content-images-image',
     })
 
     frame.createChild = createChild
@@ -42,7 +53,7 @@ function addImage(file){
 
     const closebtn = frame.createChild({
         tagName: 'button',
-        className: 'eval-content-images-uploaded-image__closebtn red-button',
+        className: 'eval-content-images-image__closebtn red-button',
     })
 
     closebtn.createChild = createChild
@@ -58,6 +69,7 @@ function addImage(file){
         dom: frame,
         file,
     })
+    handlePhotosCntChange()
 }
 
 function removeImage(file){
@@ -72,4 +84,18 @@ function removeImage(file){
     photos = photos.filter(
         cur => cur.name !== file.name
     )
+    handlePhotosCntChange()
 }
+
+function handlePhotosCntChange(){
+    if(photos.length){
+        plusButton.style.display = 'flex'
+        blankSection.style.display = 'none'
+        photosSection.style.border = 'none'
+        return null
+    }
+    blankSection.style.display = 'flex'
+    plusButton.style.display = 'none'
+    photosSection.style.border = ''
+}
+handlePhotosCntChange()

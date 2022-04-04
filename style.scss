@@ -55,6 +55,11 @@ $clr7: #E8E8E8;
 }
 
 
+// body{
+//     background-color: #000;
+//     filter: invert(1);
+// }
+
 // 888b     d888          d8b          
 // 8888b   d8888          Y8P          
 // 88888b.d88888                       
@@ -101,6 +106,7 @@ $clr7: #E8E8E8;
         background-color: $clr5;
 
         &-inputs{
+
             align-self: stretch;
             margin-right: 50px;
             @include flexV;
@@ -162,88 +168,110 @@ $clr7: #E8E8E8;
                         background-color: $clr3;
                         margin: 10px;
                     }
+
+                    .whatsapp {
+                        background-color: #38B266;
+                    }
+                    
+                    .viber {
+                        background-color: #6857DC;
+                    }
+                    
+                    .telegram {
+                        background-color: #299ED8;
+                    }
                 }
             }
         }
 
         &-images{
-            @include flexV;
-            flex-wrap: wrap;
-            border-radius: 15px;
-            background-color: $clr6;
-
-            
-            &-upload {
+            &-wrapper{
                 @include flexV;
+                align-self: stretch;
+                border: 1px dashed #D0D0D0;
+                border-radius: 15px;
+            }
+
+            flex-wrap: wrap;
+            min-width: calc(125px * 3 + 10px * 7);
+            // align-self: stretch;
+            position: relative;
+            @include flex(flex-start, flex-start, row);
+            
+             &-image{
                 position: relative;
-                &__title{
-                    font-family: Circe;
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 24px;
-                    color: $clr2;
-                }
-
-                & img{
-                    margin-top: 64px;
-                }
-
-                & input{
+                &__closebtn {
+                    @include circle;
+                    @include flex;
+                    @include rect(24px);
                     position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    background-color: #f003;
-                    // opacity: 0;
+                    right: 0;
+                    top: 0;
+                    transform: translate(50%, -50%);
+                    opacity: 0;
                 }
+                &:hover {
+                    & button{
+                        opacity: 1;
+                    }
+                }
+             }
+
+            &-plusbtn{
+                border: 1px dashed $clr4;
+                color: $clr4;
+                font-size: 36px;
+                order: 1;
             }
 
-            &-hr{
-                width: 100%;
-                margin-bottom: 40px;
-                margin-top: 56px;
-                border: none;
-                border-bottom: 1px solid $clr7;
-            }
-
-            &-uploaded{
-                $imgRes: 85px;
-                $imgMargin: 15px;
+            &-plusbtn, &-image{
+                @include rect(125px);
                 @include flex;
-                flex-wrap: wrap;
-                width: calc(#{$imgRes} * 3 + #{$imgMargin}*4);
-                margin: 0 64px 40px 64px;
+                border-radius: 15px;
+                background: none;
+                margin: 10px;
 
-                &-image{
-                    @include flex();
-                    @include rect($imgRes);
-                    background-color: transparentize($clr2, 0.95);
-                    margin: calc(15px / 2);
-                    border-radius: 10px;
-                    position: relative;
-
-                    & > img{
-                        @include rect($imgRes);
-                        object-fit: cover;
-                        border-radius: 10px;
-                    }
-
-                    &:hover{
-                        & button{
-                            opacity: 1;
-                        }
-                    }
-
-                    &__closebtn{
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        transform: translate(50%, -50%);
-                        @include rect(24px);
-                        @include circle();
-                        @include flex;
-                        opacity: 0;
-                    }
+                & > img{
+                    @include rect(125px);
+                    border-radius: 15px;
+                    object-fit: cover;
                 }
+            }
+
+            &-blank{
+                @include flex(center, center, column);
+                width: 100%;
+                align-self: stretch;
+                margin: 20px 5vw;
+                text-align: center;
+                margin-top: 40%;
+                &-title{
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+                &-hint{
+                    font-size: 14px;
+                    color: $clr2;
+                    margin: 10px 0 20px 0;
+                }
+                &-btn{
+                    background: none;
+                    border: 1px solid $clr4;
+                    border-radius: 10px;
+                    width: 100%;
+                    padding: 15px 20px;
+                }
+            }
+
+            & > input{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 100%;
+                height: 100%;
+                transform: translate(-50%, -50%);
+                background-color: #f003;
+                opacity: 0;
             }
         }
     }
@@ -256,7 +284,7 @@ $clr7: #E8E8E8;
     background-color: white;
     resize: none;
 
-    transition-duration: 255ms;
+    transition: border-color 255ms linear;
     &:focus{
         outline: none;
         border-color: $clr4;
@@ -421,7 +449,8 @@ $clr7: #E8E8E8;
                 margin-top: 30px;
 
                 &-sendbtn {
-                    width: 100%;
+                    width: auto;
+                    padding: 15px 20px;
                 }
 
                 &-hint {
@@ -445,33 +474,10 @@ $clr7: #E8E8E8;
         }
 
         &-images {
+            margin: 30px 0 20px 0;
             width: calc(100% - 40px);
-            @include flexV;
-            border-radius: 15px;
-            margin: 30px 20px;
-
-            &-upload {
-                @include flexV;
-
-                & img {
-                    margin-top: 40px;
-                }
-            }
-
-            &-hr {
-                margin-bottom: 30px;
-                margin-top: 46px;
-            }
-
-            &-uploaded {
-                width: 100%;
-                margin: 0 0 30px 0;
-
-                &-image {
-                    &__closebtn {
-                        right: 50%;
-                    }
-                }
+            &-blank {
+                margin-top: 0;;
             }
         }
     }
@@ -560,32 +566,44 @@ $clr7: #E8E8E8;
         }
 
         &-images{
-            @include flexV;
-            border-radius: 15px;
-            margin: 30px 0px;
+            border: none;
+            max-width: 90vw;
+            min-width: 0;
 
-            &-upload {
-                @include flexV;
+            &-plusbtn,
+            &-image {
+                @include rect(75px);
+                @include flex;
+                border-radius: 15px;
+                background: none;
+                margin: 5px;
+            
+                &>img {
+                    @include rect(75px);
+                    border-radius: 15px;
+                    object-fit: cover;
+                }
 
-                & img{
-                    margin-top: 40px;
+                & button{
+                    right: 50%;
+                    opacity: 1;
                 }
             }
 
-            &-hr{
-                margin-bottom: 30px;
-                margin-top: 46px;
-            }
-
-            &-uploaded{
-                width: calc(100vw - 40px);
-                margin: 0 0 30px 0;
-
-                &-image{
-                    &__closebtn{
-                        right: 50%;
-                        opacity: 1;
-                    }
+            &-blank {
+                margin: 30px 0 20px 0;
+            
+                &-title {
+                }
+            
+                &-hint {
+                    margin: 0;
+                }
+            
+                &-btn {
+                    border-radius: 10px;
+                    max-width: 50vw;
+                    padding: 15px 5px;
                 }
             }
         }

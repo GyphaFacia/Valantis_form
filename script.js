@@ -114,6 +114,7 @@ function handleFormSubmit(e){
     obj.mail = mail
     obj.phone = phone
     obj.comment = textArea?.value?.trim() ?? ''
+    obj.files = photos.map(({file}) => file)
 
     console.log(obj)
 
