@@ -1,5 +1,3 @@
-// email и телефон - одно из них обязательно к заполнению. К заполнению обязательно хотя бы одно.
-
 // Во всех случаях так же присутствует поле для загрузки изображений. 
 // Изначально по центру поля расположена картинка "Загрузить фото". 
 // При клике на картинку открывается диалог выбора файла. 
@@ -17,15 +15,13 @@ const options = {
             type: 'number',
             validation: validateInt,
             step: 1,
-            min: 333,
-            // max: 750,
+            min: 0,
         },
         'Вес гр.': {
             required: true,
             type: 'number',
             validation: validateFloat,
             min: 0,
-            // max: 1000000,
         },
     },
     'Драгоценные камни': {
@@ -34,7 +30,6 @@ const options = {
             type: 'number',
             validation: validateFloat,
             min: 0,
-            // max: 3106,
         },
         'Наличие документов':{
             type: 'checkbox',
@@ -62,7 +57,6 @@ const options = {
             validation: validateInt,
             step: 1,
             min: 0,
-            // max: 512,
         }
     },
     'Антиквариат': {},
@@ -70,89 +64,95 @@ const options = {
 }
 
 
-// 10-minute-mail - осознанный выбор пользователя
-// async function checkEmail(mail){
-//     try {
-//         const API = 'https://api.testmail.top/domain/check?data='
-//         const url = `${API}${mail}`
-//         const resp = await fetch(url, {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVzdG1haWwudG9wIiwiYXVkIjoiaHR0cHM6XC9cL2FwaS50ZXN0bWFpbC50b3AiLCJ1c2VyIjoiNjI0YTQxMmI5ZGFiMiIsInN1YiI6ImFwaSIsImlhdCI6MTY0OTAzMzUzMiwiZXhwIjo0ODA0NzEwNzMyfQ.CNz8DdGV-63NHoI3uUB7jgI047JrF7LSO_ihkANlX4E'
-//             }
-//         })
-//         const {result, message} = await resp.json()
-//         return {result, message}
-//     } catch (error) {
-//         console.warn(error)
-//         return {result: false, message: '...'}        
-//     }
-// }
 
 function handleFormSubmit(e){
-    let inputs = [...form.querySelectorAll('input')].map(inp => inp.value)
-    let [name, phone, mail] = inputs
+    const evalType = dropdown.value // тип изделия
+    const evalData = options[evalType] // поля от типа изделия
 
-    // if(!name){
-    //     alert('Поле имени не может быть пустым')
-    //     return null
-    // }
-
-    // if(!phone && !mail){
-    //     alert('Введите Ваш номер телефона или адрес электронной почты')
-    //     return null
-    // }
-
-    // if(phone && validatePhone(phone)){
-    //     alert(validatePhone(phone))
-    //     return null
-    // }
-
-    // if(mail && validateMail(mail)){
-    //     alert(validateMail(mail))
-    //     return null 
-    // }
-
-    // if(mail){
-    //     try {
-    //         const domain = mail.split('@').pop()
-    //         const resp = await checkEmail(domain)
-    //         if(!resp.result){
-    //             if()
-    //             alert(`Нам не знаком ваш почтовый ящик "${domain}"`)
-    //             return null
-    //         }
-    //     } catch (error) {
-    //         console.warn(error)
-    //     }
-    // }
-    
-    const keys = Object.keys(options[dropdown.value]).map(
-        (key, i) => ({[key] : inputs[i + 3]})
+    const defaultInputs = 'Name Phone Mail'.split(' ').map(
+        key => evalForm[key]
     )
-    console.log(keys)
+    const extraInputs = Object.keys(evalData).map(
+        key => evalForm[key]
+    )
+    const inputsVals = [
+        ...defaultInputs,
+        ...extraInputs
+    ].map(
+        inp => inp.getAttribute('type') === 'checkbox' ? inp.checked : inp.value
+    )
+    
+    let [name, phone, mail] = inputsVals
+
+    if(!name){
+        alert('Поле имени не может быть пустым')
+        return null
+    }
+
+    if(!phone && !mail){
+        alert('Введите Ваш номер телефона или адрес электронной почты')
+        return null
+    }
+
+    if(phone && validatePhone(phone)){
+        alert(validatePhone(phone))
+        return null
+    }
+
+    if(mail && validateMail(mail)){
+        alert(validateMail(mail))
+        return null 
+    }
+
+    const obj = Object.keys(options[dropdown.value]).reduce(
+        (acc, cur, i)=>({
+            ...acc,
+            [cur]: inputsVals[i+3]
+        })
+    , {})
+    obj.name = name
+    obj.mail = mail
+    obj.phone = phone
+    obj.comment = textArea?.value?.trim() ?? ''
+
+    console.log(obj)
 
     e.preventDefault()
-    console.log('OK')
     return false
 }
 
 
+const evalForm = document.forms['eval-form']
+evalForm.onsubmit = handleFormSubmit
+
 const dropdown = document.querySelector('select.form-input')
 dropdown.createChild = createChild
-const inputsSection = document.querySelector('.eval-content-inputs-top')
+
+const inputsSection = evalForm.children[0]
 inputsSection.createChild = createChild
+
+const textArea = document.querySelector('textarea')
+
 addAsterisksToRequiredInputs()
 constructDropMenu(dropdown, options)
 setTimeout(()=>{
     dropdown.value = 'Ювелирное изделие'
     handleDropDownMenuChange(dropdown, options)
 }, 0)
-const form = document.querySelector('form.eval-content-inputs')
-form.onsubmit = handleFormSubmit
 
+setTimeout(() => {
+    const inputs = [...inputsSection.querySelectorAll('input')]
 
-// Вопросы
-// Как пользователь узнает о своей ошибке ?
+    inputs[0].value = 'Name'
+    inputs[1].value = '+7 499 123 45 67'
+    inputs[2].value = 'some@mail.ru'
+
+    inputs[3].value = 'золото'
+    inputs[4].value = '333'
+    inputs[5].value = '50'
+
+    textArea.value = 'test '.repeat(5)
+}, 100);
+
 
 

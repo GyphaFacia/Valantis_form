@@ -53,6 +53,7 @@ function createInput(inputName, inputSettings){
             tagName: 'input',
             className: 'form-input',
             placeholder: inputName,
+            name: inputName,
             type: inputSettings.type,
             value: inputSettings.default ?? "",
             required: inputSettings.required ?? false
@@ -77,6 +78,7 @@ function createInput(inputName, inputSettings){
         tagName: 'input',
         className: 'form-checkbox',
         type: inputSettings.type,
+        name: inputName,
         id: inputName,
     })
     input.checked = inputSettings.default

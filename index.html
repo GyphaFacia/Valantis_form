@@ -22,18 +22,18 @@
         </h2>
 
         <div class="eval-content">
-            <form class="eval-content-inputs" action="#">
+            <form class="eval-content-inputs" id="eval-form" name="eval-form" action="#">
                 <div class="eval-content-inputs-top">
                     <div class="eval-content-inputs-top-input-wrapper">
-                        <input placeholder="Имя пользователя" type="text" class="form-input" required>
+                        <input placeholder="Имя пользователя" type="text" class="form-input" name="Name" required>
                     </div>
 
                     <div class="eval-content-inputs-top-input-wrapper">
-                        <input placeholder="Телефон" type="tel" class="form-input">
+                        <input placeholder="Телефон" type="tel" class="form-input" name="Phone">
                     </div>
 
                     <div class="eval-content-inputs-top-input-wrapper">
-                        <input placeholder="Электронная почта" type="email" class="form-input">
+                        <input placeholder="Электронная почта" type="email" class="form-input" name="Mail">
                     </div>
 
                     <div class="eval-content-inputs-top-input-wrapper">
@@ -45,6 +45,8 @@
                 <div class="eval-content-inputs-middle">
                     <textarea name="" id="" cols="40" rows="10" class="form-input"
                     placeholder="Дополнительная информация"
+                    name = "Comment"
+                    form = "eval-form"
                     ></textarea>
                 </div>
                 <div class="eval-content-inputs-bottom">
