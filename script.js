@@ -131,6 +131,8 @@ const textArea = document.querySelector('textarea')
 
 const submitButton = evalForm.querySelector('input[type="submit"]')
 
+constructDropMenu(dropdown, options)
+
 setTimeout(()=>{
     dropdown.value = 'Ювелирное изделие'
     handleDropDownMenuChange(dropdown, options)

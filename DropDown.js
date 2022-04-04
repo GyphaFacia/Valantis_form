@@ -104,6 +104,3 @@ function createInput(inputName, inputSettings){
     return input
 }
 
-setTimeout(()=>{
-    constructDropMenu(dropdown, options)
-}, 0)

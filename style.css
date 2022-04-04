@@ -303,6 +303,7 @@
       align-self: stretch;
   border: 1px dashed #D0D0D0;
   border-radius: 15px;
+  width: 100%;
 }
 
 .eval-content-images-image {
@@ -605,7 +606,7 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: 100vw;
+    width: 100%;
     padding: 30px 0px;
   }
   .eval-content-inputs {
@@ -742,6 +743,9 @@
   .eval-content-images {
     margin: 30px 0 20px 0;
     width: calc(100% - 40px);
+  }
+  .eval-content-images-wrapper {
+    border: none;
   }
   .eval-content-images-blank {
     margin-top: 0;
