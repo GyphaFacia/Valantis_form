@@ -140,19 +140,41 @@ setTimeout(()=>{
     handleDropDownMenuChange(dropdown, options)
 }, 0)
 
-setTimeout(() => {
-    const inputs = [...inputsSection.querySelectorAll('input')]
+let mobile = false
+function handleMobile(){
+    const {matches} = matchMedia('(max-width: 1000px)')
+    if(matches === mobile){return null}
+    mobile = matches
+    const imgs = document.querySelector('aside.eval-content-images')
+    if(!mobile){
+        const newParent = document.querySelector('.eval-content')
+        imgs.parentElement.removeChild(imgs)
+        newParent.appendChild(imgs)
+    }
+    else{
+        const newParent = document.querySelector('.eval-content-inputs')
+        const before = newParent.children[2]
+        imgs.parentElement.removeChild(imgs)
+        newParent.insertBefore(imgs, before)
+    }
+}
+window.onresize = handleMobile
+window.onload = handleMobile
 
-    inputs[0].value = 'Name'
-    inputs[1].value = '+7 499 123 45 67'
-    inputs[2].value = 'some@mail.ru'
 
-    inputs[3].value = 'золото'
-    inputs[4].value = '333'
-    inputs[5].value = '50'
+// setTimeout(() => {
+//     const inputs = [...inputsSection.querySelectorAll('input')]
 
-    textArea.value = 'test '.repeat(5)
-}, 100);
+//     inputs[0].value = 'Name'
+//     inputs[1].value = '+7 499 123 45 67'
+//     inputs[2].value = 'some@mail.ru'
+
+//     inputs[3].value = 'золото'
+//     inputs[4].value = '333'
+//     inputs[5].value = '50'
+
+//     textArea.value = 'test '.repeat(5)
+// }, 100);
 
 
 

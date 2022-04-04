@@ -1,3 +1,11 @@
+// 888     888                 
+// 888     888                 
+// 888     888                 
+// Y88b   d88P 8888b.  888d888 
+//  Y88b d88P     "88b 888P"   
+//   Y88o88P  .d888888 888     
+//    Y888P   888  888 888     
+//     Y8P    "Y888888 888     
 $clr1: #1E1E1E; // Черный
 $clr2: #888888; // Серный
 $clr3: #BE9A55; // Золотой
@@ -47,6 +55,14 @@ $clr7: #E8E8E8;
 }
 
 
+// 888b     d888          d8b          
+// 8888b   d8888          Y8P          
+// 88888b.d88888                       
+// 888Y88888P888  8888b.  888 88888b.  
+// 888 Y888P 888     "88b 888 888 "88b 
+// 888  Y8P  888 .d888888 888 888  888 
+// 888   "   888 888  888 888 888  888 
+// 888       888 "Y888888 888 888  888 
 .eval{
     @include flexV;
     font-family: Manrope;
@@ -164,6 +180,7 @@ $clr7: #E8E8E8;
                     font-size: 16px;
                     font-weight: 400;
                     line-height: 24px;
+                    color: $clr2;
                 }
 
                 & img{
@@ -280,7 +297,7 @@ $clr7: #E8E8E8;
         padding-left: 35px;
         margin-bottom: 12px;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 18px;
         user-select: none;
     }
 
@@ -332,4 +349,231 @@ $clr7: #E8E8E8;
     color: #A52838;
     font-weight: 900;
     pointer-events: none;
+}
+
+
+
+// 88888888888       888      
+//     888           888      
+//     888           888      
+//     888   8888b.  88888b.  
+//     888      "88b 888 "88b 
+//     888  .d888888 888  888 
+//     888  888  888 888 d88P 
+//     888  "Y888888 88888P"  
+@media only screen and (max-width: 1000px){
+.eval {
+    @include flexV;
+
+    &-content {
+        max-width: 100vw;
+        @include flexV;
+        width: 100vw;
+        padding: 30px 0px;
+
+        &-inputs {
+            margin-right: 0px;
+            @include flexV;
+
+            &-top,
+            &-middle,
+            &-bottom {
+                @include flexV;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            &-top {
+                @include flexV;
+
+                &-input-wrapper {
+                    @include flexV;
+                    width: 100%;
+                    min-width: 0px;
+                    margin: 0 0 10px 0;
+                }
+            }
+
+            &-middle {
+                max-height: 33vh;
+
+                & textarea {
+                    width: 100%;
+                }
+            }
+
+            &-bottom {
+                @include flexV;
+                margin-top: 30px;
+
+                &-sendbtn {
+                    width: 100%;
+                }
+
+                &-hint {
+                    margin: 20px 60px 10px 60px;
+                    text-align: center;
+                }
+
+                &-socials {
+                    @include flexA;
+                    margin-right: 10px;
+
+                    &__link {
+                        @include rect(46px);
+                        @include flex;
+                        border-radius: 10px;
+                        background-color: $clr3;
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+
+        &-images {
+            @include flexV;
+            border-radius: 15px;
+            margin: 30px 20px;
+
+            &-upload {
+                @include flexV;
+
+                & img {
+                    margin-top: 40px;
+                }
+            }
+
+            &-hr {
+                margin-bottom: 30px;
+                margin-top: 46px;
+            }
+
+            &-uploaded {
+                // width: calc(100vw - 40px);
+                width: 100%;
+                margin: 0 0 30px 0;
+
+                &-image {
+                    &__closebtn {
+                        right: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+}
+
+
+// 888b     d888          888      d8b 888          
+// 8888b   d8888          888      Y8P 888          
+// 88888b.d88888          888          888          
+// 888Y88888P888  .d88b.  88888b.  888 888  .d88b.  
+// 888 Y888P 888 d88""88b 888 "88b 888 888 d8P  Y8b 
+// 888  Y8P  888 888  888 888  888 888 888 88888888 
+// 888   "   888 Y88..88P 888 d88P 888 888 Y8b.     
+// 888       888  "Y88P"  88888P"  888 888  "Y8888  
+@media only screen and (max-width: 450px){
+.eval{
+    @include flexV;
+
+    &-title{
+        &__left{
+            font-size: 24px;
+        }
+        &__center{
+            @include rect(4px);
+        }
+        &__right{
+            font-size: 24px;
+        }
+        margin-bottom: 0;
+    }
+
+    &-content{
+        @include flexV;
+        width: 100vw;
+        padding: 30px 0px;
+        border-radius: 0px;
+
+        &-inputs{
+            margin-right: 0px;
+            @include flexV;
+
+            &-top, &-middle, &-bottom{
+                @include flexV;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            &-top{
+                @include flexV;
+                &-input-wrapper{
+                    @include flexV;
+                    width: 100%;
+                    min-width: 0px;
+                    margin: 0 0 10px 0;
+                }
+            }
+            &-middle {
+                max-height: 33vh;
+                & textarea{
+                    width: 100%;
+                }
+            }
+            &-bottom {
+                @include flexV;
+                margin-top: 30px;
+                &-sendbtn{
+                    width: 100%;
+                }
+                &-hint{
+                    margin: 20px 60px 10px 60px;
+                    text-align: center;
+                }
+                &-socials{
+                    @include flexA;
+                    margin-right: 10px;
+                    &__link{
+                        @include rect(46px);
+                        @include flex;
+                        border-radius: 10px;
+                        background-color: $clr3;
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+
+        &-images{
+            @include flexV;
+            border-radius: 15px;
+            margin: 30px 0px;
+
+            &-upload {
+                @include flexV;
+
+                & img{
+                    margin-top: 40px;
+                }
+            }
+
+            &-hr{
+                margin-bottom: 30px;
+                margin-top: 46px;
+            }
+
+            &-uploaded{
+                width: calc(100vw - 40px);
+                margin: 0 0 30px 0;
+
+                &-image{
+                    &__closebtn{
+                        right: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
 }
