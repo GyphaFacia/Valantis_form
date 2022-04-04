@@ -9,9 +9,11 @@
 const options = {
     'Ювелирное изделие': {
         'Металл': {
+            required: true,
             type: 'text',
         },
         'Проба': {
+            required: true,
             type: 'number',
             validation: validateInt,
             step: 1,
@@ -19,6 +21,7 @@ const options = {
             max: 750,
         },
         'Вес гр.': {
+            required: true,
             type: 'number',
             validation: validateFloat,
             min: 0,
@@ -27,6 +30,7 @@ const options = {
     },
     'Драгоценные камни': {
         'Вес в каратах': {
+            required: true,
             type: 'number',
             validation: validateFloat,
             min: 0,
@@ -39,17 +43,21 @@ const options = {
     },
     'Шубы': {
         'Вид меха': {
+            required: true,
             type: 'text',
         },
         'Состояние изделия':{
+            required: true,
             type: 'text',
         }
     },
     'Техника Apple': {
         'Модель': {
+            required: true,
             type: 'text'
         },
         'Объем памяти': {
+            required: true,
             type: 'number',
             validation: validateInt,
             step: 64,

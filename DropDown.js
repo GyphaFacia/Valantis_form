@@ -6,8 +6,7 @@ function constructDropMenu(dropdown, options){
             text: key,
             value: key,
         })
-    })
-    
+    })    
 
     dropdown.setAttribute('prev', dropdown.value)
     dropdown.addEventListener('change', () => {
@@ -55,7 +54,8 @@ function createInput(inputName, inputSettings){
             className: 'form-input',
             placeholder: inputName,
             type: inputSettings.type,
-            value: inputSettings.default ?? ""
+            value: inputSettings.default ?? "",
+            required: inputSettings.required ?? false
         })
 
         if(inputSettings.type === 'number' && inputSettings.step){
@@ -68,6 +68,7 @@ function createInput(inputName, inputSettings){
             input.setAttribute('max', inputSettings.max)
         }
 
+        addAsterisksToRequiredInputs()
         return input
     }
 
@@ -97,5 +98,6 @@ function createInput(inputName, inputSettings){
         input.click()
     }
    
+    addAsterisksToRequiredInputs()
     return input
 }

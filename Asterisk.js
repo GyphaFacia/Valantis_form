@@ -25,18 +25,21 @@ function placeAsteriskOnInput(inputDom){
     const parent = inputDom.parentNode
     const {height} = parent.getBoundingClientRect()
     
-    const asterisk = document.createElement('span')
-    const textnode = document.createTextNode('*')
-    asterisk.appendChild(textnode)
-    parent.appendChild(asterisk)
+    if(parent.children[1] && parent.children[1].className == 'asterisk'){
+        return null
+    }
+
+    parent.createChild = createChild
+    const asterisk = parent.createChild({
+        tagName: 'span',
+        className: 'asterisk',
+        text: '*'
+    })
 
     const {style} = asterisk
-    style.position = 'absolute'
+    
     style.left = `${width + 5}px`
-    style.top = `${height/4 - 5}px`
-    style.fontSize = '20px'
-    style.color = '#A52838'
-    style.fontWeight = '900'
+    style.top = `${height/4 - 5}px`    
 
     inputDom.addEventListener('input', (e)=>{
         asterisk.style.display = !!e.target.value ? 'none' : 'block'

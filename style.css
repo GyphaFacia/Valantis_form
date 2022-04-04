@@ -516,4 +516,11 @@
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
+
+.asterisk {
+  position: absolute;
+  font-size: 18px;
+  color: #A52838;
+  font-weight: 900;
+}
 /*# sourceMappingURL=style.css.map */
