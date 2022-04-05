@@ -99,20 +99,23 @@ async function handleFormSubmit(e){
     obj.mail = mail
     obj.phone = phone
     obj.comment = textArea?.value?.trim() ?? ''
-    obj.files = photos.map(({file}) => file)
 
-    const formData = new FormData()
-    Object.keys(obj).forEach(
-        key => formData.append(key, obj[key])
+    const data = new FormData()
+    Object.keys(obj).forEach( // ключи объекта
+        key => data.append(key, obj[key])
+    )
+    const files = [...document.querySelector('input[type="file"]').files]
+    files.forEach(
+        f => data.append('photos', f)
     )
 
-    // const response = fetch('...', {
-    //     method: 'POST',
-    //     body: formData,
-    // })
-    // .then(resp => resp.json())
-    // .then(json => console.log(json))
-    // .catch(e => console.warn(e))
+    const request = fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body: data,
+    })
+    .then(resp => resp.json())
+    .then(json => console.log(json))
+    .catch(e => console.warn(e))
 
     return true
 }

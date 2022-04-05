@@ -103,6 +103,13 @@ function removeImage(file){
 }
 
 function handlePhotosCntChange(){
+    const dt = new DataTransfer()
+    photos.forEach(
+        obj => dt.items.add(obj.file)
+    )
+    fileInput.files = dt.files
+    console.log(fileInput.files)
+
     if(photos.length){
         plusButton.style.display = 'flex'
         blankSection.style.display = 'none'
