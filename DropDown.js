@@ -60,6 +60,7 @@ function createInput(inputName, inputSettings){
         })
 
         if(inputSettings.type === 'number' && inputSettings.step){
+            console.log(input, inputSettings.step)
             input.setAttribute('step', inputSettings.step)
         }
         if(inputSettings.type === 'number' && (inputSettings.min ?? undefined) !== undefined){
@@ -67,6 +68,12 @@ function createInput(inputName, inputSettings){
         }
         if(inputSettings.type === 'number' && (inputSettings.max ?? undefined) !== undefined){
             input.setAttribute('max', inputSettings.max)
+        }
+
+        if(inputSettings.validation){
+            input.oninput = inputSettings.validation
+            input.onpaste = inputSettings.validation
+            input.setAttribute('autocomplete', 'new-password')
         }
 
         addAsterisksToRequiredInputs()

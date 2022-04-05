@@ -295,6 +295,7 @@ $clr7: #E8E8E8;
     &::placeholder {
         font-size: 18px;
         color: $clr2;
+        color: transparent; // !!!
     }
 }
 
@@ -392,6 +393,30 @@ $clr7: #E8E8E8;
     color: #A52838;
     font-weight: 900;
     pointer-events: none;
+}
+
+.placeholder{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    padding-left: 20px;
+    color: $clr2;
+    @include flex(flex-start);
+    font-size: 18px;
+    pointer-events: none;
+
+    opacity: 1;
+    transition-duration: 255ms;
+
+    &--important{
+        &::after{
+            content: "*";
+            color: $clr4;
+            transform: translateX(5px);
+        }
+    }
 }
 
 

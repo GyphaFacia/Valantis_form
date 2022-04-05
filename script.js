@@ -7,23 +7,20 @@ const options = {
         'Проба': {
             required: true,
             type: 'number',
-            validation: validateInt,
             step: 1,
             min: 0,
         },
         'Вес гр.': {
             required: true,
-            type: 'number',
+            type: 'text',
             validation: validateFloat,
-            min: 0,
         },
     },
     'Драгоценные камни': {
         'Вес в каратах': {
             required: true,
-            type: 'number',
+            type: 'text',
             validation: validateFloat,
-            min: 0,
         },
         'Наличие документов':{
             type: 'checkbox',
@@ -48,7 +45,6 @@ const options = {
         'Объем памяти': {
             required: true,
             type: 'number',
-            validation: validateInt,
             step: 1,
             min: 0,
         }

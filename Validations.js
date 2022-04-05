@@ -34,14 +34,21 @@ function validateInt(str){
     }
 }
 
-function validateFloat(str){
-    try {
-        return String(Number(str)) === str
-    } catch (error) {
-        return false
-    }
-}
+function validateFloat(e){
+    const {target} = e
+    let {value} = target
+    
+    value = value.split('').filter(
+        c => '1234567890.'.includes(c)
+    ).join('')
 
+
+    if(value.split('').filter(c => c=='.').length > 1){
+        value = value.split('.').slice(0, 2).join('.')
+    }
+
+    e.target.value = value
+}
 
 
 

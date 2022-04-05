@@ -449,21 +449,25 @@
 .form-input::-webkit-input-placeholder {
   font-size: 18px;
   color: #888888;
+  color: transparent;
 }
 
 .form-input:-ms-input-placeholder {
   font-size: 18px;
   color: #888888;
+  color: transparent;
 }
 
 .form-input::-ms-input-placeholder {
   font-size: 18px;
   color: #888888;
+  color: transparent;
 }
 
 .form-input::placeholder {
   font-size: 18px;
   color: #888888;
+  color: transparent;
 }
 
 .form-select {
@@ -573,6 +577,41 @@
   color: #A52838;
   font-weight: 900;
   pointer-events: none;
+}
+
+.placeholder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  padding-left: 20px;
+  color: #888888;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 1;
+  -webkit-transition-duration: 255ms;
+          transition-duration: 255ms;
+}
+
+.placeholder--important::after {
+  content: "*";
+  color: #A52838;
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
 }
 
 @media only screen and (max-width: 1000px) {
