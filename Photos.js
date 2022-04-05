@@ -108,7 +108,6 @@ function handlePhotosCntChange(){
         obj => dt.items.add(obj.file)
     )
     fileInput.files = dt.files
-    console.log(fileInput.files)
 
     if(photos.length){
         plusButton.style.display = 'flex'

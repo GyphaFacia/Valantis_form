@@ -60,7 +60,6 @@ function createInput(inputName, inputSettings){
         })
 
         if(inputSettings.type === 'number' && inputSettings.step){
-            console.log(input, inputSettings.step)
             input.setAttribute('step', inputSettings.step)
         }
         if(inputSettings.type === 'number' && (inputSettings.min ?? undefined) !== undefined){
