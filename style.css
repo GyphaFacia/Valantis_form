@@ -8,12 +8,6 @@
   src: url("./src/Fonts/Circe/Circe/Circe-Regular.woff");
 }
 
-body {
-  background-color: #000;
-  -webkit-filter: invert(1) hue-rotate(220deg) brightness(2);
-          filter: invert(1) hue-rotate(220deg) brightness(2);
-}
-
 .eval {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -204,7 +198,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  padding: 15px 0;
+  padding: 15px 20px;
   background-color: #A52838;
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
@@ -420,7 +414,7 @@ body {
   background: none;
   border: 1px solid #A52838;
   border-radius: 10px;
-  width: 100%;
+  width: 66%;
   padding: 15px 20px;
 }
 

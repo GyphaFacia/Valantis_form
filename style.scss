@@ -54,10 +54,10 @@ $clr7: #E8E8E8;
     border-radius: 100vmax;
 }
 
-body{
-    background-color: #000;
-    filter: invert(1) hue-rotate(220deg) brightness(2);
-}
+// body{
+//     background-color: #000;
+//     filter: invert(1) hue-rotate(220deg) brightness(2);
+// }
 
 // 888b     d888          d8b          
 // 8888b   d8888          Y8P          
@@ -143,7 +143,7 @@ body{
                 margin-top: 30px;
                 &-sendbtn{
                     @include flex;
-                    padding: 15px 0;
+                    padding: 15px 20px;
                     background-color: $clr4;
                     flex-basis: 50%;
                     border-radius: 10px;
@@ -258,7 +258,7 @@ body{
                     background: none;
                     border: 1px solid $clr4;
                     border-radius: 10px;
-                    width: 100%;
+                    width: 66%;
                     padding: 15px 20px;
                 }
             }
