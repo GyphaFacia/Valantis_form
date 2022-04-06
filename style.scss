@@ -54,11 +54,10 @@ $clr7: #E8E8E8;
     border-radius: 100vmax;
 }
 
-
-// body{
-//     background-color: #000;
-//     filter: invert(1);
-// }
+body{
+    background-color: #000;
+    filter: invert(1) hue-rotate(220deg) brightness(2);
+}
 
 // 888b     d888          d8b          
 // 8888b   d8888          Y8P          

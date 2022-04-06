@@ -8,6 +8,12 @@
   src: url("./src/Fonts/Circe/Circe/Circe-Regular.woff");
 }
 
+body {
+  background-color: #000;
+  -webkit-filter: invert(1) hue-rotate(220deg) brightness(2);
+          filter: invert(1) hue-rotate(220deg) brightness(2);
+}
+
 .eval {
   display: -webkit-box;
   display: -ms-flexbox;
