@@ -14,7 +14,10 @@ function applyNumberInputRestrictions(inputElement){
 }
 
 // дробным инпутам выключаем подсказки и убираем все лишние символы
-// пользователь всё ещё в своём праве напечатать "+2-1.e.3"
+// function restrictFloatInput(inputElement){
+// function implementRulesToFloatInput(inputElement){
+// pattern
+// customize float input
 function applyFloatInputRestrictions(inputElement){
     inputElement.setAttribute('autocomplete', 'new-password')
 

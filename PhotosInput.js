@@ -7,7 +7,7 @@ function handleFileInput(e){
 
     const files = [...fileInput.files]
     files.forEach(photo => {
-        if(isValidPhoto(photo)){
+        if(isPhotoFileCorrect(photo)){
             addPhoto(photo)
         }
     })
@@ -52,7 +52,7 @@ function addPhoto(photo){
 
 function removePhoto(photo){
     photos = photos.filter(currentPhoto => {
-        if(currentPhoto.name == photo.name){
+        if(currentPhoto.name === photo.name){
             const {dom} = currentPhoto
             dom.parentNode.removeChild(dom)
             return false

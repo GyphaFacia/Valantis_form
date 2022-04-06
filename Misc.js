@@ -1,3 +1,6 @@
+// todo : notAttributes - убрать отрицание
+// todo : у textArea исчез placeholder
+// todo : ()_{
 function createChild(options){
     const notAttributes = `className text tagName`.split(' ')
     const node = document.createElement(options.tagName ?? 'div')
@@ -6,12 +9,12 @@ function createChild(options){
         node.className = options.className
     }
     if(options.text){
-        const textnode = document.createTextNode(options.text)
-        node.appendChild(textnode)
+        const textNode = document.createTextNode(options.text)
+        node.appendChild(textNode)
     }
 
     Object.keys(options).filter(
-        key => !notAttributes.includes(key)
+        key => ! notAttributes.includes(key)
     ).forEach(
         key => node.setAttribute(key, options[key])
     )
@@ -20,21 +23,25 @@ function createChild(options){
     return node
 }
 
-let mobile = false
+let isTabletLayout = false
 function handleLayoutChange(){
-    const {matches} = matchMedia('(max-width: 1000px)')
-    if(matches === mobile){return null}
-    mobile = matches
-    
-    const imagesWrapper = document.querySelector('.eval-content-images-wrapper')
-    if(!mobile){
-        imagesWrapper.parentElement.removeChild(imagesWrapper)
-        evalForm.appendChild(imagesWrapper)
+    const mediaQueryMatches = matchMedia('(max-width: 1000px)').matches
+    if(mediaQueryMatches === isTabletLayout){
+        return ;
     }
-    else{
+    isTabletLayout = mediaQueryMatches
+
+    const imagesWrapper = document.querySelector('.eval-content-images-wrapper')
+    if(isTabletLayout){
+        const evalContentInputs = document.querySelector('.eval-content-inputs')
         const before = evalContentInputs.children[2]
         imagesWrapper.parentElement.removeChild(imagesWrapper)
         evalContentInputs.insertBefore(imagesWrapper, before)
+    }
+    else {
+        const evalForm = document.querySelector('.eval-content')
+        imagesWrapper.parentElement.removeChild(imagesWrapper)
+        evalForm.appendChild(imagesWrapper)
     }
 }
 window.onresize = handleLayoutChange

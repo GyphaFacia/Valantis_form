@@ -14,6 +14,12 @@ $clr5: #FAFAFA; // Светло-серый
 $clr6: #F1F1F1; // Линии
 
 $clr7: #E8E8E8;
+$clr8: #fff;
+$clr9: #D0D0D0;
+
+$clrWhatsApp: #38B266;
+$clrViber: #6857DC;
+$clrTelegram: #299ED8;
 
 
 *{
@@ -30,22 +36,22 @@ $clr7: #E8E8E8;
     display: flex;
     align-items: $align;
     justify-content: $just;
-    flex-direction: $dir;
+    flex-disquareion: $dir;
 }
 
-@mixin flexV {
+@mixin flexVertical {
     @include flex(flex-start, center, column);
 }
 
-@mixin flexB {
+@mixin flexHorizontalSpaceBetween {
     @include flex(space-between);
 }
 
-@mixin flexA {
+@mixin flexHorizontalSpaceAround {
     @include flex(space-around);
 }
 
-@mixin rect($res){
+@mixin square($res){
     width: $res;
     height: $res;
 }
@@ -68,7 +74,7 @@ $clr7: #E8E8E8;
 // 888   "   888 888  888 888 888  888 
 // 888       888 "Y888888 888 888  888 
 .eval{
-    @include flexV;
+    @include flexVertical;
     font-family: Manrope;
     margin: 0 10vw;
 
@@ -88,7 +94,7 @@ $clr7: #E8E8E8;
         }
         &__center{
             @include circle();
-            @include rect(6px);
+            @include square(6px);
             margin: 0 10px;
             background-color: $clr4;
             transform: translateY(50%);
@@ -105,24 +111,22 @@ $clr7: #E8E8E8;
         background-color: $clr5;
 
         &-inputs{
-
             align-self: stretch;
             margin-right: 50px;
-            @include flexV;
+            @include flexVertical;
 
             &-top, &-middle, &-bottom{
                 width: 100%;
             }
 
             &-top{
-                @include flexB;
+                @include flexHorizontalSpaceBetween;
                 flex-wrap: wrap;
 
                 &-input-wrapper{
-                    @include flexV;
+                    @include flexVertical;
                     position: relative;
                     flex-basis: 45%;
-                    // max-width: 45%;
                     min-width: 210px;
                     flex-grow: 1;
                     margin: 0 20px 20px 0;
@@ -139,15 +143,15 @@ $clr7: #E8E8E8;
                 }
             }
             &-bottom {
-                @include flexB;
+                @include flexHorizontalSpaceBetween;
                 margin-top: 30px;
                 &-sendbtn{
                     @include flex;
                     padding: 15px 20px;
-                    background-color: $clr4;
                     flex-basis: 50%;
                     border-radius: 10px;
-                    color: white;
+                    background-color: $clr4;
+                    color: $clr8;
                 }
                 &-hint{
                     font-family: Circe;
@@ -161,7 +165,7 @@ $clr7: #E8E8E8;
                     @include flex;
                     margin-right: 10px;
                     &__link{
-                        @include rect(46px);
+                        @include square(46px);
                         @include flex;
                         border-radius: 10px;
                         background-color: $clr3;
@@ -169,15 +173,15 @@ $clr7: #E8E8E8;
                     }
 
                     .whatsapp {
-                        background-color: #38B266;
+                        background-color: $clrWhatsApp;
                     }
                     
                     .viber {
-                        background-color: #6857DC;
+                        background-color: $clrViber;
                     }
                     
                     .telegram {
-                        background-color: #299ED8;
+                        background-color: $clrTelegram;
                     }
                 }
             }
@@ -185,16 +189,15 @@ $clr7: #E8E8E8;
 
         &-images{
             &-wrapper{
-                @include flexV;
+                @include flexVertical;
                 align-self: stretch;
-                border: 1px dashed #D0D0D0;
+                border: 1px dashed $clr9;
                 border-radius: 15px;
                 width: 100%;
             }
 
             flex-wrap: wrap;
             min-width: calc(125px * 3 + 10px * 7);
-            // align-self: stretch;
             position: relative;
             @include flex(flex-start, flex-start, row);
             
@@ -203,7 +206,7 @@ $clr7: #E8E8E8;
                 &__closebtn {
                     @include circle;
                     @include flex;
-                    @include rect(24px);
+                    @include square(24px);
                     position: absolute;
                     right: 0;
                     top: 0;
@@ -225,14 +228,14 @@ $clr7: #E8E8E8;
             }
 
             &-plusbtn, &-image{
-                @include rect(125px);
+                @include square(125px);
                 @include flex;
                 border-radius: 15px;
                 background: none;
                 margin: 10px;
 
                 & > img{
-                    @include rect(125px);
+                    @include square(125px);
                     border-radius: 15px;
                     object-fit: cover;
                 }
@@ -348,7 +351,7 @@ $clr7: #E8E8E8;
         position: absolute;
         top: 0;
         left: 0;
-        @include rect(25px);
+        @include square(25px);
         background-color: transparentize($clr2, 0.75);
         box-shadow: 0 0 0 1px $clr6;
         border-radius: 5px;
@@ -430,31 +433,31 @@ $clr7: #E8E8E8;
 //     888  "Y888888 88888P"  
 @media only screen and (max-width: 1000px){
 .eval {
-    @include flexV;
+    @include flexVertical;
 
     &-content {
         max-width: 100vw;
-        @include flexV;
+        @include flexVertical;
         width: 100%;
         padding: 30px 0px;
 
         &-inputs {
             margin-right: 0px;
-            @include flexV;
+            @include flexVertical;
 
             &-top,
             &-middle,
             &-bottom {
-                @include flexV;
+                @include flexVertical;
                 width: 100%;
                 padding: 0 20px;
             }
 
             &-top {
-                @include flexV;
+                @include flexVertical;
 
                 &-input-wrapper {
-                    @include flexV;
+                    @include flexVertical;
                     width: 100%;
                     min-width: 0px;
                     margin: 0 0 10px 0;
@@ -470,7 +473,7 @@ $clr7: #E8E8E8;
             }
 
             &-bottom {
-                @include flexV;
+                @include flexVertical;
                 margin-top: 30px;
 
                 &-sendbtn {
@@ -484,11 +487,11 @@ $clr7: #E8E8E8;
                 }
 
                 &-socials {
-                    @include flexA;
+                    @include flexHorizontalSpaceAround;
                     margin-right: 10px;
 
                     &__link {
-                        @include rect(46px);
+                        @include square(46px);
                         @include flex;
                         border-radius: 10px;
                         background-color: $clr3;
@@ -524,14 +527,14 @@ $clr7: #E8E8E8;
 // 888       888  "Y88P"  88888P"  888 888  "Y8888  
 @media only screen and (max-width: 450px){
 .eval{
-    @include flexV;
+    @include flexVertical;
 
     &-title{
         &__left{
             font-size: 24px;
         }
         &__center{
-            @include rect(4px);
+            @include square(4px);
         }
         &__right{
             font-size: 24px;
@@ -540,25 +543,25 @@ $clr7: #E8E8E8;
     }
 
     &-content{
-        @include flexV;
+        @include flexVertical;
         width: 100vw;
         padding: 30px 0px;
         border-radius: 0px;
 
         &-inputs{
             margin-right: 0px;
-            @include flexV;
+            @include flexVertical;
 
             &-top, &-middle, &-bottom{
-                @include flexV;
+                @include flexVertical;
                 width: 100%;
                 padding: 0 20px;
             }
 
             &-top{
-                @include flexV;
+                @include flexVertical;
                 &-input-wrapper{
-                    @include flexV;
+                    @include flexVertical;
                     width: 100%;
                     min-width: 0px;
                     margin: 0 0 10px 0;
@@ -571,7 +574,7 @@ $clr7: #E8E8E8;
                 }
             }
             &-bottom {
-                @include flexV;
+                @include flexVertical;
                 margin-top: 30px;
                 &-sendbtn{
                     width: 100%;
@@ -581,10 +584,10 @@ $clr7: #E8E8E8;
                     text-align: center;
                 }
                 &-socials{
-                    @include flexA;
+                    @include flexHorizontalSpaceAround;
                     margin-right: 10px;
                     &__link{
-                        @include rect(46px);
+                        @include square(46px);
                         @include flex;
                         border-radius: 10px;
                         background-color: $clr3;
@@ -601,14 +604,14 @@ $clr7: #E8E8E8;
 
             &-plusbtn,
             &-image {
-                @include rect(75px);
+                @include square(75px);
                 @include flex;
                 border-radius: 15px;
                 background: none;
                 margin: 5px;
             
                 &>img {
-                    @include rect(75px);
+                    @include square(75px);
                     border-radius: 15px;
                     object-fit: cover;
                 }

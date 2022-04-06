@@ -3,28 +3,36 @@ function checkIsNotEmpty(str){
 }
 
 function checkIsNotZero(str){
-    return Number(str) != 0
+    return parseFloat(str) !== 0
 }
 
-function checkIsFloat(str){
-    return Number(str) == str
+// isFloatPoint - является ли мантиссой
+function isFloatPoint(str){
+    return str.toLowerCase().includes('e')
+}
+
+function checkIsNumber(str){
+    return !isNaN(Number(str))
 }
 
 function checkIsPositive(str){
-    return Number(str) > 0
+    return parseFloat(str) > 0
 }
 
 // получить сообщение об ошибке в полях
-// "Ювелирное изделие > Проба"
-// "Драгоценные камни > Вес в каратах" 
+// "Ювелирное изделие > Вес в гр."
+// "Драгоценные камни > Вес в каратах"
 function formWeightInputErrorMessage(inputElement){
     const {value} = inputElement
 
     if(!checkIsNotEmpty(value)){
         return 'Это поле необходимо заполнить'
     }
-    if(!checkIsFloat(value)){
-        return 'Вес должен быть указан в виде дробного числа'
+    if(!checkIsNumber(value)){
+        return 'Вес должен быть указан в виде целого или дробного числа'
+    }
+    if(isFloatPoint(value)){
+        return 'Запись веса с использованием мантиссы не допустима'
     }
     if(!checkIsNotZero(value)){
         return 'Вес не может быть нулевым'
@@ -34,7 +42,6 @@ function formWeightInputErrorMessage(inputElement){
     }
     return ''
 }
-
 
 // https://qna.habr.com/q/84360
 function isPhoneNumber(str){

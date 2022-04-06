@@ -57,14 +57,18 @@ function handleFormSubmit(e){
         input => data.append(input.name, input.value)
     );
     [...fileInput.files].forEach(
-        file => data.append('photos', file)
+        (file, i) => data.append(`photo${i}`, file)
     )
 
     const request = fetch('http://localhost:5000/upload', {
         method: 'POST',
+        mode: 'no-cors',
         body: data,
     })
-    .then(resp => resp.json())
+    .then(resp => {
+        console.log(resp)
+        return resp.json()
+    })
     .then(json => console.log(json))
     .catch(e => console.warn(e))
 
@@ -75,6 +79,3 @@ function handleFormSubmit(e){
 
 evalForm.onsubmit = handleFormSubmit;
 
-[...document.querySelectorAll('input')].forEach(element => {
-    element.removeAttribute('required')
-});
