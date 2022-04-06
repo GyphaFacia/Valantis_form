@@ -55,6 +55,7 @@ const DEFAULT_INPUTS = {
     'Имя пользователя': {
     },
     'Телефон': {
+        formErrorMessage: formPhoneInputErrorMessage,
     },
     'Электронная почта': {
     },
@@ -70,3 +71,4 @@ const PHOTO_MAX_SIZE = 8 * 1024 * 1024
 const PHOTOS_MAX_COUNT = 9
 
 const ALLOWED_NUMERIC_CHARS = '+-1234567890.e'.split('')
+const ALLOWED_PHONE_CHARS = '+-1234567890()'.split('')
