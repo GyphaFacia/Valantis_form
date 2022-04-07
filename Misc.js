@@ -1,8 +1,5 @@
-// todo : notAttributes - убрать отрицание
-// todo : у textArea исчез placeholder
-// todo : ()_{
 function createChild(options){
-    const notAttributes = `className text tagName`.split(' ')
+    const customNodeElementOptions = `className text tagName`.split(' ')
     const node = document.createElement(options.tagName ?? 'div')
 
     if(options.className){
@@ -14,9 +11,9 @@ function createChild(options){
     }
 
     Object.keys(options).filter(
-        key => ! notAttributes.includes(key)
+        optionName => !customNodeElementOptions.includes(optionName)
     ).forEach(
-        key => node.setAttribute(key, options[key])
+        optionName => node.setAttribute(optionName, options[optionName])
     )
 
     this.appendChild(node)

@@ -1,8 +1,8 @@
 photosSection.createChild = createChild
-fileInput.oninput = handleFileInput
+fileInput.oninput = handleNewFilesAdding
 let photos = []
 
-function handleFileInput(e){
+function handleNewFilesAdding(e){
     e.preventDefault()
 
     const files = [...fileInput.files]
@@ -63,9 +63,9 @@ function removePhoto(photo){
     handlePhotosCountChange()
 }
 
-// показывать ли подсказку "перетащите файлы сюда"
-// или некоторое кол-во файлов уже добавлено
-// и мы показываем "плюс"-кнопку для добавления новых в список
+// показывать ли подсказку "перетащите файлы сюда",
+// или же некоторое кол-во файлов уже добавлено
+// и мы показываем "плюс"-кнопку для добавления новых файлов в список
 function updatePhotosSectionStyle(){
     if(photos.length){
         plusButton.style.display = 'flex'

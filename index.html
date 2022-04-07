@@ -20,7 +20,7 @@
             <div class="eval-title__right">оценка</div>
         </h2>
 
-        <form class="eval-content" id="evalForm" name="eval-form" action="#">
+        <form class="eval-content" id="evalForm" name="eval-form" action="#" method="post">
             <section class="eval-content-inputs" id="evalContentInputs">
                 <div class="eval-content-inputs-top" id="inputsSection">
                     <div class="eval-content-inputs-top-input-wrapper">
@@ -48,16 +48,17 @@
                     </div>
                 </div>
                 <div class="eval-content-inputs-middle">
-                    <textarea id="textArea" cols="40" rows="10" class="form-input"
+                    <textarea id="textArea" cols="40" rows="10"
+                    class="form-input form-input--textarea"
                     placeholder="Дополнительная информация"
                     name = "Дополнительная информация"
                     form = "eval-form"
                     ></textarea>
                 </div>
                 <div class="eval-content-inputs-bottom">
-                    <input type="submit" value = "Отправить" class="eval-content-inputs-bottom-sendbtn red-button" id="submitButton">
+                    <input type="submit" value = "Отправить" class="eval-content-inputs-bottom__sendbtn red-button" id="submitButton">
 
-                    <div class="eval-content-inputs-bottom-hint">
+                    <div class="eval-content-inputs-bottom__hint">
                         Или свяжитесь с нами
                         через мессенджеры:
                     </div>
@@ -79,12 +80,12 @@
                 <div class="eval-content-images" id="photosSection">
                     <div class="eval-content-images-blank" id="blankSection">
                         <img class="eval-content-images-blank-icon" src="./src/Images/Svg/Add Image.svg">
-                        <div class="eval-content-images-blank-title">Перетащите фотографии сюда</div>
-                        <div class="eval-content-images-blank-hint">Или нажмите на кнопку</div>
-                        <button class="eval-content-images-blank-btn">Выбрать файлы</button>
+                        <div class="eval-content-images-blank__title">Перетащите фотографии сюда</div>
+                        <div class="eval-content-images-blank__hint">Или нажмите на кнопку</div>
+                        <button class="eval-content-images-blank__btn">Выбрать файлы</button>
                     </div>
                     <button class="eval-content-images-plusbtn" id="plusButton">+</button>
-                    <input type="file" multiple id="fileInput">
+                    <input type="file" id="fileInput" multiple>
                 </div>
             </aside>
         </form>
@@ -93,7 +94,7 @@
 
     <script src="./phone-mask.js"></script>
 
-    <script src="UiRules.js"></script>
+    <script src="./InputsRules.js"></script>
     <script src="./InputsErrors.js"></script>
 
     <script src="./Constants.js"></script>

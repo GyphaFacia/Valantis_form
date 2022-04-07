@@ -66,7 +66,7 @@ function createNewCheckbox(inputName){
         className: 'form-checkbox-custom',
     })
 
-    checkboxWrapper.onclick = (e)=>{
+    checkboxWrapper.onclick = ()=>{
         checkboxElement.click()
     }
    
@@ -86,7 +86,9 @@ function createPlaceholder(parentNode, placeholderText, isRequired){
         placeholderElement.style.opacity = 0
     }
     inputElement.onblur = ()=>{
-        if(inputElement.value){ return null }
+        if(inputElement.value){
+            return null
+        }
         placeholderElement.style.opacity = 1
     }
 }

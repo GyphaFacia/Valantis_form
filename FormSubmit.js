@@ -31,7 +31,6 @@ function checkInput(inputElement){
     const formErrorMessage = inputData.formErrorMessage ?? (() => '')
 
     const errorMessage = formErrorMessage(inputElement)
-
     if(errorMessage){
         sendErrorMessage(`Поле "${inputName}": ${errorMessage}`)
         return false
@@ -43,13 +42,14 @@ function handleFormSubmit(e){
     e.preventDefault()
 
     if(e.submitter !== submitButton){
-        return false
+        return;
     }
     if(!checkAllInputs()){
-        return false
+        return;
     }
 
     const inputsSelector = 'input:not([type=file]):not([type=submit])'
+    const textArea = evalForm.querySelector('text-area')
     const inputs = [...evalForm.querySelectorAll(inputsSelector), textArea]
 
     const data = new FormData()
@@ -72,9 +72,7 @@ function handleFormSubmit(e){
     .then(json => console.log(json))
     .catch(e => console.warn(e))
 
-
-    console.log('Sent')
-    return false
+    console.log('Form and files are sent')
 }
 
 evalForm.onsubmit = handleFormSubmit;
