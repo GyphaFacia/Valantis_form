@@ -25,8 +25,26 @@ $clr4-bright: #b02a37;
 $clr4-shadow: rgba(225, 83, 97, 0.5);
 $clr4-asterisk: #A52838;
 
-*{
+$offset0: 0.5rem;
+$offset1: 1rem; $offset1r: 1.5rem;
+$offset2: 2rem; $offset2r: 2.5rem;
+$offset3: 3rem; $offset3r: 3.5rem;
+$offset4: 4rem; $offset4r: 4.5rem;
+$offset5: 5rem; $offset5r: 5.5rem;
+$offset6: 6rem; $offset6r: 6.5rem;
+$offset7: 7rem; $offset7r: 7.5rem;
+$offset8: 8rem; $offset8r: 8.5rem;
+$offset9: 9rem; $offset9r: 9.5rem;
+
+$width1: 125px;
+$width2: 210px;
+
+* {
     box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
 }
 
 @font-face {
@@ -63,8 +81,6 @@ $clr4-asterisk: #A52838;
     border-radius: 100vmax;
 }
 
-
-
 // body{
 //     background-color: #000;
 //     filter: invert(1) hue-rotate(220deg) brightness(2);
@@ -97,7 +113,7 @@ $clr4-asterisk: #A52838;
         &__center{
             @include circle();
             @include square(6px);
-            margin: 0 10px;
+            margin: 0 $offset1;
             background-color: $clr4;
             transform: translateY(50%);
         }
@@ -108,14 +124,13 @@ $clr4-asterisk: #A52838;
 
     &-content{
         @include flex(center, flex-start);
-        padding: 40px;
-        border-radius: 15px;
+        padding: $offset4;
+        border-radius: $offset1r;
         background-color: $clr5;
 
         &-inputs{
-
             align-self: stretch;
-            margin-right: 50px;
+            margin-right: $offset5;
             @include flexVertical;
 
             &-top, &-middle, &-bottom{
@@ -130,9 +145,9 @@ $clr4-asterisk: #A52838;
                     @include flexVertical;
                     position: relative;
                     flex-basis: 45%;
-                    min-width: 210px;
+                    min-width: $width2;
                     flex-grow: 1;
-                    margin: 0 20px 20px 0;
+                    margin: 0 $offset2 $offset2 0;
                 }
                 & .form-input, & .form-select{
                     align-self: stretch;
@@ -142,15 +157,15 @@ $clr4-asterisk: #A52838;
                 height: 100%;
                 & textarea{
                     height: 100%;
-                    width: calc(100% - 20px);
+                    width: calc(100% - #{$offset2});
                 }
             }
             &-bottom {
                 @include flexHorSpaceBetween;
-                margin-top: 30px;
+                margin-top: $offset3;
                 &__sendbtn{
                     @include flex;
-                    padding: 15px 20px;
+                    padding: $offset1r $offset2;
                     background-color: $clr4;
                     flex-basis: 50%;
                     border-radius: 10px;
@@ -161,18 +176,18 @@ $clr4-asterisk: #A52838;
                     font-size: 16px;
                     font-weight: 400;
                     margin-left: 32px;
-                    margin-right: 10px;
+                    margin-right: $offset1;
                     color: $clr2;
                 }
                 &-socials{
                     @include flex;
-                    margin-right: 10px;
+                    margin-right: $offset1;
                     &__link{
                         @include square(46px);
                         @include flex;
                         border-radius: 10px;
                         background-color: $clr3;
-                        margin: 10px;
+                        margin: $offset1;
                     }
 
                     .whatsapp {
@@ -200,8 +215,7 @@ $clr4-asterisk: #A52838;
             }
 
             flex-wrap: wrap;
-            min-width: calc(125px * 3 + 10px * 7);
-            // align-self: stretch;
+            min-width: calc($width1 * 3 + #{$offset1} * 7);
             position: relative;
             @include flex(flex-start, flex-start, row);
             
@@ -232,14 +246,14 @@ $clr4-asterisk: #A52838;
             }
 
             &-plusbtn, &-image{
-                @include square(125px);
+                @include square($width1);
                 @include flex;
                 border-radius: 15px;
                 background: none;
-                margin: 10px;
+                margin: $offset1;
 
                 & > img{
-                    @include square(125px);
+                    @include square($width1);
                     border-radius: 15px;
                     object-fit: cover;
                 }
@@ -249,7 +263,7 @@ $clr4-asterisk: #A52838;
                 @include flex(center, center, column);
                 width: 100%;
                 align-self: stretch;
-                margin: 20px 5vw;
+                margin: $offset2 5vw;
                 text-align: center;
                 margin-top: 40%;
                 &__title{
@@ -259,14 +273,14 @@ $clr4-asterisk: #A52838;
                 &__hint{
                     font-size: 14px;
                     color: $clr2;
-                    margin: 10px 0 20px 0;
+                    margin: $offset1 0 $offset2 0;
                 }
                 &__btn{
                     background: none;
                     border: 1px solid $clr4;
                     border-radius: 10px;
                     width: 66%;
-                    padding: 15px 20px;
+                    padding: $offset1r $offset2;
                 }
             }
 
@@ -284,7 +298,7 @@ $clr4-asterisk: #A52838;
 }
 
 .form-input{
-    padding: 15px 20px;
+    padding: $offset1r $offset2;
     border-radius: 10px;
     border: 1px solid $clr6;
     background-color: $clr8;
@@ -300,7 +314,7 @@ $clr4-asterisk: #A52838;
     &::placeholder {
         font-size: 18px;
         color: $clr2;
-        color: transparent; // !!!
+        color: transparent;
     }
 
     &--textarea::placeholder{
@@ -358,10 +372,10 @@ $clr4-asterisk: #A52838;
         position: absolute;
         top: 0;
         left: 0;
-        @include square(25px);
+        @include square($offset2r);
         background-color: transparentize($clr2, 0.75);
         box-shadow: 0 0 0 1px $clr6;
-        border-radius: 5px;
+        border-radius: $offset0;
         transition-duration: 255ms;
         cursor: pointer;
     }
@@ -387,9 +401,9 @@ $clr4-asterisk: #A52838;
     
     &-wrapper &-custom:after {
         left: 9px;
-        top: 5px;
-        width: 5px;
-        height: 10px;
+        top: $offset0;
+        width: $offset0;
+        height: $offset1;
         border: solid $clr4;
         border-width: 0 3px 3px 0;
         transform: rotate(45deg);
@@ -408,9 +422,9 @@ $clr4-asterisk: #A52838;
     @include square(100%);
     @include flex(flex-start);
     position: absolute;
-    left: 0px;
-    top: 0px;
-    padding-left: 20px;
+    left: 0;
+    top: 0;
+    padding-left: $offset2;
     color: $clr2;
     font-size: 18px;
     pointer-events: none;
@@ -422,7 +436,7 @@ $clr4-asterisk: #A52838;
         &::after{
             content: "*";
             color: $clr4;
-            transform: translateX(5px);
+            transform: translateX($offset0);
         }
     }
 }
@@ -445,7 +459,7 @@ $clr4-asterisk: #A52838;
         @include flexVertical;
         max-width: 100vw;
         width: 100%;
-        padding: 30px 0px;
+        padding: $offset3 0px;
 
         &-inputs {
             @include flexVertical;
@@ -456,7 +470,7 @@ $clr4-asterisk: #A52838;
             &-bottom {
                 @include flexVertical;
                 width: 100%;
-                padding: 0 20px;
+                padding: 0 $offset2;
             }
 
             &-top {
@@ -466,7 +480,7 @@ $clr4-asterisk: #A52838;
                     @include flexVertical;
                     width: 100%;
                     min-width: 0px;
-                    margin: 0 0 10px 0;
+                    margin: 0 0 $offset1 0;
                 }
             }
 
@@ -479,28 +493,28 @@ $clr4-asterisk: #A52838;
 
             &-bottom {
                 @include flexVertical;
-                margin-top: 30px;
+                margin-top: $offset3;
 
                 &__sendbtn {
                     width: auto;
-                    padding: 15px 20px;
+                    padding: $offset1r $offset2;
                 }
 
                 &__hint {
-                    margin: 20px 60px 10px 60px;
+                    margin: $offset2 $offset6 $offset1 $offset6;
                     text-align: center;
                 }
 
                 &-socials {
                     @include flexHorSpaceAround;
-                    margin-right: 10px;
+                    margin-right: $offset1;
 
                     &__link {
                         @include square(46px);
                         @include flex;
                         border-radius: 10px;
                         background-color: $clr3;
-                        margin: 10px;
+                        margin: $offset1;
                     }
                 }
             }
@@ -511,8 +525,8 @@ $clr4-asterisk: #A52838;
                 border: none;
             }
 
-            margin: 30px 0 20px 0;
-            width: calc(100% - 40px);
+            margin: $offset3 0 $offset2 0;
+            width: calc(100% - #{$offset4});
             &-blank {
                 margin-top: 0;
             }
@@ -550,17 +564,17 @@ $clr4-asterisk: #A52838;
     &-content{
         @include flexVertical;
         width: 100vw;
-        padding: 30px 0px;
-        border-radius: 0px;
+        padding: $offset3 0;
+        border-radius: 0;
 
         &-inputs{
-            margin-right: 0px;
+            margin-right: 0;
             @include flexVertical;
 
             &-top, &-middle, &-bottom{
                 @include flexVertical;
                 width: 100%;
-                padding: 0 20px;
+                padding: 0 $offset2;
             }
 
             &-top{
@@ -568,7 +582,7 @@ $clr4-asterisk: #A52838;
                 &-input-wrapper{
                     @include flexVertical;
                     width: 100%;
-                    min-width: 0px;
+                    min-width: 0;
                     margin: 0 0 10px 0;
                 }
             }
@@ -580,23 +594,23 @@ $clr4-asterisk: #A52838;
             }
             &-bottom {
                 @include flexVertical;
-                margin-top: 30px;
+                margin-top: $offset3;
                 &__sendbtn{
                     width: 100%;
                 }
                 &__hint{
-                    margin: 20px 60px 10px 60px;
+                    margin: $offset2 $offset6 $offset1 $offset6;
                     text-align: center;
                 }
                 &-socials{
                     @include flexHorSpaceAround;
-                    margin-right: 10px;
+                    margin-right: $offset1;
                     &__link{
                         @include square(46px);
                         @include flex;
                         border-radius: 10px;
                         background-color: $clr3;
-                        margin: 10px;
+                        margin: $offset1;
                     }
                 }
             }
@@ -613,7 +627,7 @@ $clr4-asterisk: #A52838;
                 @include flex;
                 border-radius: 15px;
                 background: none;
-                margin: 5px;
+                margin: $offset0;
             
                 &>img {
                     @include square(75px);
@@ -628,7 +642,7 @@ $clr4-asterisk: #A52838;
             }
 
             &-blank {
-                margin: 30px 0 20px 0;
+                margin: $offset3 0 $offset2 0;
             
                 &__hint {
                     margin: 0;
@@ -637,7 +651,7 @@ $clr4-asterisk: #A52838;
                 &__btn {
                     border-radius: 10px;
                     max-width: 50vw;
-                    padding: 15px 5px;
+                    padding: $offset1r $offset0;
                 }
             }
         }
