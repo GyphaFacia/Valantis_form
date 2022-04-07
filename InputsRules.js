@@ -1,14 +1,14 @@
-function applyNumericInputsRestrictions(inputElement, inputType){
-    if(inputType.includes('float')){
+function applyNumericInputsRestrictions(inputElement, inputType) {
+    if (inputType.includes('float')) {
         applyFloatInputRestrictions(inputElement)
     }
-    if(inputType == 'number'){
+    if (inputType == 'number') {
         applyNumberInputRestrictions(inputElement)
     }
 }
 
 // целочисленным инпутам запрещаем быть ниже нуля и быть дробными
-function applyNumberInputRestrictions(inputElement){
+function applyNumberInputRestrictions(inputElement) {
     inputElement.setAttribute('min', '0')
     inputElement.setAttribute('step', '1')
 }
@@ -18,25 +18,24 @@ function applyNumberInputRestrictions(inputElement){
 // function implementRulesToFloatInput(inputElement){
 // pattern
 // customize float input
-function applyFloatInputRestrictions(inputElement){
+function applyFloatInputRestrictions(inputElement) {
     inputElement.setAttribute('autocomplete', 'new-password')
 
-    inputElement.oninput = ({target})=>{
+    inputElement.oninput = ({ target }) => {
         const newValue = target.value
         const oldValue = target.getAttribute('old-value') ?? ''
-        
-        if(leaveOnlyAllowedFloatChars(newValue) !== newValue){
+
+        if (leaveOnlyAllowedFloatChars(newValue) !== newValue) {
             target.value = oldValue
-        }
-        else{
+        } else {
             target.setAttribute('old-value', newValue)
         }
     }
 }
 
-function leaveOnlyAllowedFloatChars(str){
+function leaveOnlyAllowedFloatChars(str) {
     return str
-           .split('')
-           .filter(char => ALLOWED_NUMERIC_CHARS.includes(char))
-           .join('')
+        .split('')
+        .filter((char) => ALLOWED_NUMERIC_CHARS.includes(char))
+        .join('')
 }

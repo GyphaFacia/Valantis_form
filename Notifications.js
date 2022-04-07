@@ -1,4 +1,7 @@
-function createNotification(notificationText, lifeTime = NOTIFICATION_LIFETIME){
+function createNotification(
+    notificationText,
+    lifeTime = NOTIFICATION_LIFETIME
+) {
     const notificationsSection = document.querySelector('.notifications')
 
     notificationsSection.createChild = createChild
@@ -18,20 +21,20 @@ function createNotification(notificationText, lifeTime = NOTIFICATION_LIFETIME){
         text: '×',
     })
 
-    notificationCloseButton.onclick = ()=>{
+    notificationCloseButton.onclick = () => {
         activateNotificationFadeOutState(notificationWrapper, 0)
     }
 
     handleNotificationVisualEffects(notificationWrapper, lifeTime)
 }
 
-function handleNotificationVisualEffects(notificationElement, lifeTime){
+function handleNotificationVisualEffects(notificationElement, lifeTime) {
     activateNotificationFadeInState(notificationElement)
     activateNotificationFadeOutState(notificationElement, lifeTime)
 }
 
-function activateNotificationFadeInState(notificationElement){
-    let {transitionDuration} = getComputedStyle(notificationElement)
+function activateNotificationFadeInState(notificationElement) {
+    let { transitionDuration } = getComputedStyle(notificationElement)
     transitionDuration = parseFloat(transitionDuration) * 1000
 
     setTimeout(() => {
@@ -40,8 +43,8 @@ function activateNotificationFadeInState(notificationElement){
     }, 0)
 }
 
-function activateNotificationFadeOutState(notificationElement, lifeTime){
-    let {transitionDuration} = getComputedStyle(notificationElement)
+function activateNotificationFadeOutState(notificationElement, lifeTime) {
+    let { transitionDuration } = getComputedStyle(notificationElement)
     transitionDuration = parseFloat(transitionDuration) * 1000
 
     setTimeout(() => {
@@ -49,15 +52,14 @@ function activateNotificationFadeOutState(notificationElement, lifeTime){
         notificationElement.classList.remove('notification-wrapper--fade-in')
     }, lifeTime)
 
-    setTimeout(()=>{
+    setTimeout(() => {
         deleteNotification(notificationElement)
     }, lifeTime + transitionDuration)
 }
 
-
-function deleteNotification(notificationElement){
+function deleteNotification(notificationElement) {
     const notificationsSection = document.querySelector('.notifications')
-    if(notificationElement.parentElement === notificationsSection){
+    if (notificationElement.parentElement === notificationsSection) {
         notificationsSection.removeChild(notificationElement)
     }
 }

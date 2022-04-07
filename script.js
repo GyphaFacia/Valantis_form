@@ -1,3 +1,3 @@
-// [...document.querySelectorAll('input')].forEach(element => {
-//     element.removeAttribute('required')
-// });
+[...document.querySelectorAll('input')].forEach((element) => {
+    element.removeAttribute('required')
+})

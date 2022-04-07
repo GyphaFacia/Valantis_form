@@ -1,23 +1,24 @@
-function handleDropdownMenuOptionChange(){
+function handleDropdownMenuOptionChange() {
     const newOption = dropdownMenu.value
     const oldOption = dropdownMenu.getAttribute('old-value')
 
-    if(newOption !== oldOption){
+    if (newOption !== oldOption) {
         dropdownMenuOptionChanged()
     }
 
     dropdownMenu.setAttribute('old-value', newOption)
 }
 
-function removeOldInputs(){
-    [...inputsSection.children].slice(4).forEach(input => {
+function removeOldInputs() {
+    ;[...inputsSection.children].slice(4).forEach((input) => {
         inputsSection.removeChild(input)
     })
 }
 
-function createNewInput(inputName, inputType, isRequired){
-    if(inputType == 'checkbox'){
-        return createNewCheckbox(inputName)
+function createNewInput(inputName, inputType, isRequired) {
+    if (inputType == 'checkbox') {
+        createNewCheckbox(inputName)
+        return
     }
 
     inputsSection.createChild = createChild
@@ -25,24 +26,25 @@ function createNewInput(inputName, inputType, isRequired){
         tagName: 'div',
         className: 'eval-content-inputs-top-input-wrapper',
     })
-    
+
     inputWrapper.createChild = createChild
     const inputElement = inputWrapper.createChild({
         tagName: 'input',
         className: 'form-input',
         name: inputName,
         type: inputType,
-        required: isRequired ?? false
+        required: isRequired ?? false,
     })
 
     createPlaceholder(inputWrapper, inputName, isRequired ?? false)
     applyNumericInputsRestrictions(inputElement, inputType)
 }
 
-function createNewCheckbox(inputName){
+function createNewCheckbox(inputName) {
     const checkboxWrapper = inputsSection.createChild({
         tagName: 'div',
-        className: 'eval-content-inputs-top-input-wrapper form-checkbox-wrapper',
+        className:
+            'eval-content-inputs-top-input-wrapper form-checkbox-wrapper',
     })
     checkboxWrapper.createChild = createChild
 
@@ -66,40 +68,42 @@ function createNewCheckbox(inputName){
         className: 'form-checkbox-custom',
     })
 
-    checkboxWrapper.onclick = ()=>{
+    checkboxWrapper.onclick = () => {
         checkboxElement.click()
     }
-   
+
     return checkboxElement
 }
 
-function createPlaceholder(parentNode, placeholderText, isRequired){
+function createPlaceholder(parentNode, placeholderText, isRequired) {
     parentNode.createChild = createChild
     const placeholderElement = parentNode.createChild({
         tagName: 'span',
         text: placeholderText,
-        className: isRequired ? 'placeholder placeholder--important' : 'placeholder'
+        className: isRequired
+            ? 'placeholder placeholder--important'
+            : 'placeholder',
     })
 
     const inputElement = parentNode.children[0]
-    inputElement.onfocus = ()=>{
+    inputElement.onfocus = () => {
         placeholderElement.style.opacity = 0
     }
-    inputElement.onblur = ()=>{
-        if(inputElement.value){
-            return null
+    inputElement.onblur = () => {
+        if (inputElement.value) {
+            return
         }
         placeholderElement.style.opacity = 1
     }
 }
 
-function dropdownMenuOptionChanged(){
+function dropdownMenuOptionChanged() {
     const optionsInputs = EVAL_OPTIONS[dropdownMenu.value]
     removeOldInputs()
-    
-    Object.keys(optionsInputs).forEach(
-        inputName => createNewInput(
-            inputName, 
+
+    Object.keys(optionsInputs).forEach((inputName) =>
+        createNewInput(
+            inputName,
             optionsInputs[inputName].type,
             optionsInputs[inputName].required
         )
@@ -107,13 +111,13 @@ function dropdownMenuOptionChanged(){
 }
 
 // добавить плейсхолдеры для трёх постоянных инпутов (имени, телефона, почты)
-function addPlaceholdersToDefaultInputs(){
+function addPlaceholdersToDefaultInputs() {
     const existingInputsWrappers = [...inputsSection.children].slice(0, 3)
-    existingInputsWrappers.forEach(
-        wrapper => createPlaceholder(
-            wrapper, 
+    existingInputsWrappers.forEach((wrapper) =>
+        createPlaceholder(
+            wrapper,
             wrapper.children[0].getAttribute('placeholder'),
-            false,
+            false
         )
     )
 }

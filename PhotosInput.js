@@ -2,18 +2,18 @@ photosSection.createChild = createChild
 fileInput.oninput = handleNewFilesAdding
 let photos = []
 
-function handleNewFilesAdding(e){
+function handleNewFilesAdding(e) {
     e.preventDefault()
 
     const files = [...fileInput.files]
-    files.forEach(photo => {
-        if(isPhotoFileCorrect(photo)){
+    files.forEach((photo) => {
+        if (isPhotoFileCorrect(photo)) {
             addPhoto(photo)
         }
     })
 }
 
-function addPhoto(photo){
+function addPhoto(photo) {
     const photoWrapper = photosSection.createChild({
         tagName: 'div',
         className: 'eval-content-images-image',
@@ -22,7 +22,7 @@ function addPhoto(photo){
     photoWrapper.createChild = createChild
     const photoElement = photoWrapper.createChild({
         tagName: 'img',
-        src: window.URL.createObjectURL(photo)
+        src: window.URL.createObjectURL(photo),
     })
 
     const closeButton = photoWrapper.createChild({
@@ -33,10 +33,10 @@ function addPhoto(photo){
     closeButton.createChild = createChild
     const cross = closeButton.createChild({
         tagName: 'img',
-        src: './src/Images/Svg/X.svg'
+        src: './src/Images/Svg/X.svg',
     })
 
-    closeButton.onclick = (e)=>{
+    closeButton.onclick = (e) => {
         removePhoto(photo)
         e.stopPropagation()
     }
@@ -50,10 +50,10 @@ function addPhoto(photo){
     handlePhotosCountChange()
 }
 
-function removePhoto(photo){
-    photos = photos.filter(currentPhoto => {
-        if(currentPhoto.name === photo.name){
-            const {dom} = currentPhoto
+function removePhoto(photo) {
+    photos = photos.filter((currentPhoto) => {
+        if (currentPhoto.name === photo.name) {
+            const { dom } = currentPhoto
             dom.parentNode.removeChild(dom)
             return false
         }
@@ -66,24 +66,21 @@ function removePhoto(photo){
 // показывать ли подсказку "перетащите файлы сюда",
 // или же некоторое кол-во файлов уже добавлено
 // и мы показываем "плюс"-кнопку для добавления новых файлов в список
-function updatePhotosSectionStyle(){
-    if(photos.length){
+function updatePhotosSectionStyle() {
+    if (photos.length) {
         plusButton.style.display = 'flex'
         blankSection.style.display = 'none'
         photosSection.parentElement.style.border = 'none'
-    }
-    else{
+    } else {
         blankSection.style.display = 'flex'
         plusButton.style.display = 'none'
         photosSection.parentElement.style.border = ''
     }
 }
 
-function handlePhotosCountChange(){
+function handlePhotosCountChange() {
     const dt = new DataTransfer()
-    photos.forEach(
-        obj => dt.items.add(obj.file)
-    )
+    photos.forEach((obj) => dt.items.add(obj.file))
     fileInput.files = dt.files
 
     updatePhotosSectionStyle()

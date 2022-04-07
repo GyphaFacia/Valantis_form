@@ -418,7 +418,7 @@ html {
   padding: 1.5rem 2rem;
 }
 
-.eval-content-images > input {
+.eval-content-images__file-input {
   position: absolute;
   left: 50%;
   top: 50%;

@@ -1,112 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <section class="eval">
-        <h2 class="eval-title">
-            <b class="eval-title__left">Онлайн</b>
-            <span class="eval-title__center"></span>
-            <div class="eval-title__right">оценка</div>
-        </h2>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <section class="eval">
+            <h2 class="eval-title">
+                <b class="eval-title__left">Онлайн</b>
+                <span class="eval-title__center"></span>
+                <div class="eval-title__right">оценка</div>
+            </h2>
 
-        <form class="eval-content" id="evalForm" name="eval-form" action="#" method="post">
-            <section class="eval-content-inputs" id="evalContentInputs">
-                <div class="eval-content-inputs-top" id="inputsSection">
-                    <div class="eval-content-inputs-top-input-wrapper">
-                        <input placeholder="Имя пользователя" type="text" class="form-input" name="Имя пользователя" required>
+            <form
+                class="eval-content"
+                id="evalForm"
+                name="eval-form"
+                action="#"
+                method="post"
+            >
+                <section class="eval-content-inputs" id="evalContentInputs">
+                    <div class="eval-content-inputs-top" id="inputsSection">
+                        <div class="eval-content-inputs-top-input-wrapper">
+                            <input
+                                placeholder="Имя пользователя"
+                                type="text"
+                                class="form-input"
+                                name="Имя пользователя"
+                                required
+                            />
+                        </div>
+
+                        <div class="eval-content-inputs-top-input-wrapper">
+                            <input
+                                placeholder="Телефон"
+                                type="tel"
+                                class="form-input"
+                                name="Телефон"
+                            />
+                        </div>
+
+                        <div class="eval-content-inputs-top-input-wrapper">
+                            <input
+                                placeholder="Электронная почта"
+                                type="email"
+                                class="form-input"
+                                name="Электронная почта"
+                            />
+                        </div>
+
+                        <div class="eval-content-inputs-top-input-wrapper">
+                            <select
+                                class="form-input form-select"
+                                id="dropdownMenu"
+                            >
+                                <option value="Ювелирное изделие"
+                                    >Ювелирное изделие</option
+                                >
+                                <option value="Драгоценные камни"
+                                    >Драгоценные камни</option
+                                >
+                                <option value="Шубы">Шубы</option>
+                                <option value="Техника Apple"
+                                    >Техника Apple</option
+                                >
+                                <option value="Антиквариат">Антиквариат</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                            <img
+                                src="./src/Images/Svg/Arrow Down.svg"
+                                class="form-select__arrow"
+                                alt="Arrow down icon"
+                            />
+                        </div>
                     </div>
-
-                    <div class="eval-content-inputs-top-input-wrapper">
-                        <input placeholder="Телефон" type="tel" class="form-input" name="Телефон">
+                    <div class="eval-content-inputs-middle">
+                        <textarea
+                            id="textArea"
+                            cols="40"
+                            rows="10"
+                            class="form-input form-input--textarea"
+                            placeholder="Дополнительная информация"
+                            name="Дополнительная информация"
+                            form="eval-form"
+                        ></textarea>
                     </div>
+                    <div class="eval-content-inputs-bottom">
+                        <input
+                            type="submit"
+                            value="Отправить"
+                            class="eval-content-inputs-bottom__sendbtn red-button"
+                            id="submitButton"
+                        />
 
-                    <div class="eval-content-inputs-top-input-wrapper">
-                        <input placeholder="Электронная почта" type="email" class="form-input" name="Электронная почта">
+                        <div class="eval-content-inputs-bottom__hint">
+                            Или свяжитесь с нами через мессенджеры:
+                        </div>
+                        <div class="eval-content-inputs-bottom-socials">
+                            <a
+                                href="#"
+                                class="eval-content-inputs-bottom-socials__link whatsapp"
+                            >
+                                <img
+                                    src="./src/Images/Svg/WhatsApp.svg"
+                                    alt="WhatsApp link"
+                                />
+                            </a>
+                            <a
+                                href="viber://chat?number=79852536119"
+                                class="eval-content-inputs-bottom-socials__link viber"
+                            >
+                                <img
+                                    src="./src/Images/Svg/Viber.svg"
+                                    alt="Viber link"
+                                />
+                            </a>
+                            <a
+                                href="tg://resolve?domain=79852536119"
+                                class="eval-content-inputs-bottom-socials__link telegram"
+                            >
+                                <img
+                                    src="./src/Images/Svg/Telegram.svg"
+                                    alt="Telegram link"
+                                />
+                            </a>
+                        </div>
                     </div>
+                </section>
 
-                    <div class="eval-content-inputs-top-input-wrapper">
-                        <select class="form-input form-select" id="dropdownMenu">
-                            <option value="Ювелирное изделие">Ювелирное изделие</option>
-                            <option value="Драгоценные камни">Драгоценные камни</option>
-                            <option value="Шубы">Шубы</option>
-                            <option value="Техника Apple">Техника Apple</option>
-                            <option value="Антиквариат">Антиквариат</option>
-                            <option value="Другое">Другое</option>
-                        </select>
-                        <img src="./src/Images/Svg/Arrow Down.svg" class="form-select__arrow" alt="Arrow down icon">
+                <aside class="eval-content-images-wrapper" id="imagesWrapper">
+                    <div class="eval-content-images" id="photosSection">
+                        <div
+                            class="eval-content-images-blank"
+                            id="blankSection"
+                        >
+                            <img
+                                class="eval-content-images-blank-icon"
+                                src="./src/Images/Svg/Add Image.svg"
+                            />
+                            <div class="eval-content-images-blank__title">
+                                Перетащите фотографии сюда
+                            </div>
+                            <div class="eval-content-images-blank__hint">
+                                Или нажмите на кнопку
+                            </div>
+                            <button class="eval-content-images-blank__btn">
+                                Выбрать файлы
+                            </button>
+                        </div>
+                        <button
+                            class="eval-content-images-plusbtn"
+                            id="plusButton"
+                        >
+                            +
+                        </button>
+                        <input
+                            class="eval-content-images__file-input"
+                            type="file"
+                            id="fileInput"
+                            multiple
+                        />
                     </div>
-                </div>
-                <div class="eval-content-inputs-middle">
-                    <textarea id="textArea" cols="40" rows="10"
-                    class="form-input form-input--textarea"
-                    placeholder="Дополнительная информация"
-                    name = "Дополнительная информация"
-                    form = "eval-form"
-                    ></textarea>
-                </div>
-                <div class="eval-content-inputs-bottom">
-                    <input type="submit" value = "Отправить" class="eval-content-inputs-bottom__sendbtn red-button" id="submitButton">
+                </aside>
+            </form>
+        </section>
 
-                    <div class="eval-content-inputs-bottom__hint">
-                        Или свяжитесь с нами
-                        через мессенджеры:
-                    </div>
-                    <div class="eval-content-inputs-bottom-socials">
-                        <a href="#" class="eval-content-inputs-bottom-socials__link whatsapp">
-                            <img src="./src/Images/Svg/WhatsApp.svg" alt="WhatsApp link">
-                        </a>
-                        <a href="viber://chat?number=79852536119" class="eval-content-inputs-bottom-socials__link viber">
-                            <img src="./src/Images/Svg/Viber.svg" alt="Viber link">
-                        </a>
-                        <a href="tg://resolve?domain=79852536119" class="eval-content-inputs-bottom-socials__link telegram">
-                            <img src="./src/Images/Svg/Telegram.svg" alt="Telegram link">
-                        </a>
-                    </div>
-                </div>
-            </section>
-            
-            <aside class="eval-content-images-wrapper" id="imagesWrapper">
-                <div class="eval-content-images" id="photosSection">
-                    <div class="eval-content-images-blank" id="blankSection">
-                        <img class="eval-content-images-blank-icon" src="./src/Images/Svg/Add Image.svg">
-                        <div class="eval-content-images-blank__title">Перетащите фотографии сюда</div>
-                        <div class="eval-content-images-blank__hint">Или нажмите на кнопку</div>
-                        <button class="eval-content-images-blank__btn">Выбрать файлы</button>
-                    </div>
-                    <button class="eval-content-images-plusbtn" id="plusButton">+</button>
-                    <input type="file" id="fileInput" multiple>
-                </div>
-            </aside>
-        </form>
-    </section>
+        <section class="notifications"></section>
 
-    <section class="notifications"></section>
+        <script src="./phone-mask.js"></script>
 
+        <script src="./InputsRules.js"></script>
+        <script src="./InputsErrors.js"></script>
 
-    <script src="./phone-mask.js"></script>
+        <script src="./Constants.js"></script>
+        <script src="./Misc.js"></script>
+        <script src="./Notifications.js"></script>
+        <script src="./DropDownMenu.js"></script>
+        <script src="./PhotoChecks.js"></script>
+        <script src="./PhotosInput.js"></script>
 
-    <script src="./InputsRules.js"></script>
-    <script src="./InputsErrors.js"></script>
-    
-    <script src="./Constants.js"></script>
-    <script src="./Misc.js"></script>
-    <script src="./Notifications.js"></script>
-    <script src="./DropDownMenu.js"></script>
-    <script src="./PhotoChecks.js"></script>
-    <script src="./PhotosInput.js"></script>
-
-    <script src="./FormSubmit.js"></script>
-    <script src="./script.js"></script>
-</body>
+        <script src="./FormSubmit.js"></script>
+        <script src="./script.js"></script>
+    </body>
 </html>
