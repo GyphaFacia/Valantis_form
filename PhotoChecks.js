@@ -20,8 +20,8 @@ function isPhotoDuplicate(photo, photos){
     return false
 }
 
-function throwPhotoUploadError(errorMessage, errorCode){
-    alert(errorMessage)
+function throwPhotoUploadError(errorMessage){
+    createNotification(errorMessage)
 }
 
 function isPhotoFileCorrect(photo){

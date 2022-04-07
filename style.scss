@@ -441,7 +441,67 @@ html {
     }
 }
 
+.notifications{
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 25vw;
+    max-height: 100vh;
+    overflow: hidden;
+    @include flexVertical();
+    padding: $offset2;
 
+    & .notification {
+        &-wrapper {
+            position: relative;
+            padding: $offset2;
+            box-shadow: 0 0 $offset0 0 $clr2;
+            border-radius: 5px;
+            transition-duration: 255ms;
+            margin-bottom: $offset3;
+            background-color: $clr8;
+
+            &--fade-in{
+                opacity: 1;
+                transform: none;
+            }
+
+            &--fade-out{
+                opacity: 0;
+                transform: translateX(150%);
+            }
+        }
+    
+        &__content {
+            font-size: 18px;
+            color: $clr2;
+        }
+    
+        &__closebtn {
+            @include square($offset3);
+            @include circle();
+            @include flex;
+            cursor: pointer;
+            border: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 15px;
+            color: $clr8;
+            background-color: $clr4;
+            transform: translate(50%, -50%);
+            transition-duration: 255ms;
+            &:hover{
+                background-color: $clr4-bright;
+            }
+
+            &:active{
+                filter: brightness(0.75);
+                transform: translate(50%, -50%) scale(0.9);
+            }
+        }
+    }
+}
 
 // 88888888888       888      
 //     888           888      

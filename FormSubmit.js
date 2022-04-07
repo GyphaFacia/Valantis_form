@@ -1,5 +1,5 @@
 function sendErrorMessage(errorMessage){
-    alert(errorMessage)
+    createNotification(errorMessage)
 }
 
 function checkAllInputs(){
