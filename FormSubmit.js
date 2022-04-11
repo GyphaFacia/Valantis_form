@@ -49,12 +49,15 @@ function handleFormSubmit(e) {
     }
 
     const inputsSelector = 'input:not([type=file]):not([type=submit])'
-    const textArea = evalForm.querySelector('text-area')
+    const textArea = evalForm.querySelector('textarea')
     const inputs = [...evalForm.querySelectorAll(inputsSelector), textArea]
 
     const data = new FormData()
     inputs.forEach(
-        (input) => data.append(input.name, input.value)
+        (input) => {
+            const inputKey = input.type == 'checkbox' ? 'checked' : 'value'
+            data.append(input.name, input[inputKey])
+        }
     );
     [...fileInput.files].forEach(
         (file, i) => data.append(`photo${i}`, file)
